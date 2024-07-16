@@ -10,9 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_16_091807) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_16_094114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coffees", force: :cascade do |t|
+    t.string "name"
+    t.string "origin"
+    t.string "roaster"
+    t.text "description"
+    t.string "strength"
+    t.string "coffee_type"
+    t.string "machin_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coffee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_id"], name: "index_favorites_on_coffee_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coffee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_id"], name: "index_preferences_on_coffee_id"
+    t.index ["user_id"], name: "index_preferences_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "description"
+    t.float "rating"
+    t.bigint "coffee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_id"], name: "index_reviews_on_coffee_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +61,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_091807) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "level"
+    t.string "habit"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "coffees"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "preferences", "coffees"
+  add_foreign_key "preferences", "users"
+  add_foreign_key "reviews", "coffees"
 end
