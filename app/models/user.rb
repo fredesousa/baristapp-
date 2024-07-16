@@ -12,9 +12,6 @@ class User < ApplicationRecord
   has_many :coffees, through: :preferences
   has_many :coffees, through: :favorites
 
-
-  
-
   # Enum pour le niveau
   enum level: {
     debutant: 'Débutant',
@@ -23,7 +20,7 @@ class User < ApplicationRecord
   }
 
   # Validations
-  validates :level, presence: true, inclusion: { in: LEVELS }
+  validates :level, presence: true, inclusion: { in: levels.keys }
   validates :habit, presence: true
 
 end
