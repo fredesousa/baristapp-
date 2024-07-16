@@ -1,1 +1,15 @@
-// Specific CSS for your home-page
+/* Définition de la classe pour les boutons personnalisés */
+.btn-custom {
+  background-color: #ffffff; /* Couleur de fond */
+  color: #6c757d; /* Couleur du texte */
+  border: 1px solid #d2b48c; /* Bordure */
+  border-radius: 5px; /* Arrondi des coins */
+  padding: 10px 20px; /* Espacement interne */
+  transition: background-color 0.3s ease; /* Transition douce pour le survol */
+}
+
+.btn-custom:hover {
+  background-color: #d2b48c; /* Couleur de fond au survol */
+  color: #ffffff; /* Changement de couleur du texte au survol */
+  border-color: #d2b48c; /* Changement de couleur de bordure au survol */
+}
