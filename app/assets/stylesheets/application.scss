@@ -10,3 +10,36 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background: linear-gradient(to bottom, #f5f5f5, #ecf0f1);
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 30px; /* Hauteur du footer */
+  padding-bottom: 30px; /* Pour compenser la marge du footer */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #D2B48C; /* Couleur de fond du footer */
+  padding: px 0; /* Espacement interne */
+  border-top: 1px solid #dee2e6; /* Bordure supérieure légère */
+}
+
+.footer .btn-custom {
+  background-color: #6c757d; /* Couleur de fond du bouton */
+  border-color: #6c757d; /* Couleur de bordure du bouton */
+}
+
+.footer .btn-custom:hover {
+  background-color: #495057; /* Couleur de fond du bouton au survol */
+  border-color: #495057; /* Couleur de bordure du bouton au survol */
+}
