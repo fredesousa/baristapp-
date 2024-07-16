@@ -1,0 +1,13 @@
+<!-- app/views/preferences/index.html.erb -->
+
+<h1>Cafés adaptés à vos préférences</h1>
+
+<% if @coffees.present? %>
+  <ul>
+    <% @coffees.each do |coffee| %>
+      <li><%= coffee.name %> - <%= coffee.description %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun café correspondant à vos préférences n'a été trouvé.</p>
+<% end %>
