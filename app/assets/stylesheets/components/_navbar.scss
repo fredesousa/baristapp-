@@ -1,12 +1,32 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-cafe {
+  background-color: #6f4e37; // Couleur brune pour un thème café
+  .navbar-brand {
+    color: #ffffff;
+    font-size: 1.5rem;
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+  .nav-link {
+    color: #ffffff;
+    &:hover {
+      color: #d3b092; // Couleur plus claire pour les survols
+    }
+  }
+  .navbar-toggler {
+    border-color: #ffffff;
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 8, 8, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+    }
+  }
+  .dropdown-menu {
+    background-color: #6f4e37;
+    .dropdown-item {
+      color: #ffffff;
+      &:hover {
+        background-color: #d3b092;
+        color: #6f4e37;
+      }
+    }
+  }
 }
