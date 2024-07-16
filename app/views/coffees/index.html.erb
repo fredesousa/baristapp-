@@ -6,6 +6,7 @@
   <ul>
     <% @coffees.each do |coffee| %>
       <li><%= coffee.name %> - <%= coffee.description %></li>
+      <li><%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if coffee.photo.key.present? %></li>
     <% end %>
   </ul>
 <% else %>
