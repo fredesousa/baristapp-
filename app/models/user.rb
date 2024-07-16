@@ -22,5 +22,6 @@ class User < ApplicationRecord
   # Validations
   validates :level, presence: true, inclusion: { in: levels.keys }
   validates :habit, presence: true
+  validates :user_name, presence: true, uniqueness: true
 
 end

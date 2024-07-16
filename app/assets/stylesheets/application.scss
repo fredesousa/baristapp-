@@ -11,35 +11,23 @@
 @import "components/index";
 @import "pages/index";
 
-body {
-  background: linear-gradient(to bottom, #f5f5f5, #ecf0f1);
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* app/assets/stylesheets/application.scss */
 
 body {
-  margin-bottom: 30px; /* Hauteur du footer */
-  padding-bottom: 30px; /* Pour compenser la marge du footer */
+  /* Fallback color */
+  background-color: #f5f5f5;
+  /* Gradient background */
+  background: linear-gradient(to bottom, #f5f5f5, #8e725e);
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #D2B48C; /* Couleur de fond du footer */
-  padding: px 0; /* Espacement interne */
-  border-top: 1px solid #dee2e6; /* Bordure supérieure légère */
-}
 
-.footer .btn-custom {
-  background-color: #6c757d; /* Couleur de fond du bouton */
-  border-color: #6c757d; /* Couleur de bordure du bouton */
-}
+/* app/assets/stylesheets/application.scss */
 
-.footer .btn-custom:hover {
-  background-color: #495057; /* Couleur de fond du bouton au survol */
-  border-color: #495057; /* Couleur de bordure du bouton au survol */
+/* application.scss */
+
+.custom-background {
+  background-color: #e6e6e6; /* Couleur de fond légèrement plus foncée */
+  padding: 20px;
+  border-radius: 8px;
+  background-image: linear-gradient(to bottom, #cecdcd3d, #e6e6e6); /* Fondu du blanc (#ffffff) vers le brun (#e6e6e6) */
 }
