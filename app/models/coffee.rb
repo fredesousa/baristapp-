@@ -4,6 +4,7 @@ class Coffee < ApplicationRecord
   has_many :preferences
   has_many :favorites
   has_many :reviews
+  has_one_attached :photo
 
   # Validations
   validates :name, presence: true
@@ -12,5 +13,5 @@ class Coffee < ApplicationRecord
   validates :strength, presence: true
   validates :coffee_type, presence: true
   validates :machine_type, presence: true
-  
+
 end
