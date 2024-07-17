@@ -1,27 +1,93 @@
-<!-- app/views/coffees/index.html.erb -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Colonne des filtres -->
+    <div class="col-lg-3 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <!-- Barre de recherche -->
+          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Rechercher par nom de café", class: "form-control" %>
+            <%= submit_tag "Rechercher", class: "btn btn-primary mt-2" %>
+          <% end %>
 
-<h1 class="text-center my-4">Cafés adaptés à vos préférences</h1>
+          <!-- Filtre par origine -->
+          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+            <%= select_tag :search_origin, options_for_select(["Bresil", "Colombie", "Ethiopie", "Jamaïque", "Panama"], params[:search_origin]), include_blank: "Origine", class: "form-control" %>
+            <%= submit_tag "Filtrer par origine", class: "btn btn-primary mt-2" %>
+          <% end %>
 
-<div class="container mb-5">
-  <% if @coffees.present? %>
-    <div class="row">
-      <% @coffees.each do |coffee| %>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <% if coffee.photo.key.present? %>
-              <%= link_to coffee_path(coffee) do %>
-                <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
-              <% end %>
-            <% end %>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title"><%= coffee.name %></h5>
-              <p class="card-text flex-grow-1"><%= coffee.description %></p>
-            </div>
-          </div>
+          <!-- Filtre par force du café -->
+          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+            <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control" %>
+            <%= submit_tag "Filtrer par force", class: "btn btn-primary mt-2" %>
+          <% end %>
+
+          <!-- Filtre par type de café -->
+          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+            <%= select_tag :search_coffee_type, options_for_select(["Arabica", "Robusta"], params[:search_coffee_type]), include_blank: "Type de café", class: "form-control" %>
+            <%= submit_tag "Filtrer par type de café", class: "btn btn-primary mt-2" %>
+          <% end %>
+
+          <!-- Filtre par type de machine -->
+          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+            <%= select_tag :search_machin_type, options_for_select(["Espresso", "Drip", "French Press"], params[:search_machin_type]), include_blank: "Type de machine", class: "form-control" %>
+            <%= submit_tag "Filtrer par type de machine", class: "btn btn-primary mt-2" %>
+          <% end %>
         </div>
+      </div>
+    </div>
+
+    <!-- Colonne des résultats de café -->
+    <div class="col-lg-9">
+      <% if @filters_applied %>
+        <h1 class="text-center mb-4">Résultats de la recherche</h1>
+        <div class="row">
+          <% @coffees_by_origin.each do |origin, coffees| %>
+            <% coffees.each do |coffee| %>
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <% if coffee.photo.key.present? %>
+                    <%= link_to coffee_path(coffee) do %>
+                      <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+                    <% end %>
+                  <% end %>
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><%= coffee.name %></h5>
+                    <p class="card-text flex-grow-1"><%= coffee.description %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <% if @coffees_by_origin.present? %>
+          <% @coffees_by_origin.each do |origin, coffees| %>
+            <h1 class="text-center mb-4">Café <%= origin %></h1>
+            <div class="row">
+              <% coffees.each do |coffee| %>
+                <div class="col-md-4 mb-4">
+                  <div class="card h-100">
+                    <% if coffee.photo.key.present? %>
+                      <%= link_to coffee_path(coffee) do %>
+                        <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+                      <% end %>
+                    <% end %>
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title"><%= coffee.name %></h5>
+                      <p class="card-text flex-grow-1"><%= coffee.description %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-md-12">
+            <p class="text-center">Aucun café correspondant à vos préférences n'a été trouvé.</p>
+          </div>
+        <% end %>
       <% end %>
     </div>
-  <% else %>
-    <p class="text-center">Aucun café correspondant à vos préférences n'a été trouvé.</p>
-  <% end %>
+  </div>
 </div>
