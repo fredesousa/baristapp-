@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
       <h1 class="text-center">Bienvenue sur notre application de sélection de cafés!</h1>
-        
+
       <% if user_signed_in? %>
         <div class="mt-4">
           <p class="lead">Bienvenue <%= current_user.user_name %>!</p>
@@ -12,7 +12,7 @@
               <h2 class="card-title text-center">Choisissez vos préférences de café</h2>
 
               <% if current_user.debutant? %>
-                <%= form_with(model: @preference, url: user_preferences_path(current_user), local: true, class: "mt-3") do |form| %>
+                <%= form_with(model: @preference, local: true, class: "mt-3") do |form| %>
                   <div class="form-group ">
                     <%= form.label :coffee_form, "Forme de café" %><br>
                     <div class="tag-wrapper">
