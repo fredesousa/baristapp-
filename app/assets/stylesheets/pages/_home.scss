@@ -1,17 +1,61 @@
-/* Définition de la classe pour les boutons personnalisés */
+/* Styles pour les boutons */
 .btn-custom {
   background-color: #ffffff; /* Couleur de fond */
   color: #6F4E37; /* Couleur du texte */
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
-  padding: 10px 20px; /* Espacement interne */
+  padding: 8px 15px; /* Espacement interne */
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
-  margin-top: 10px;
-  margin-right: 10px;
+  margin: 10px; /* Espacement autour des boutons */
 }
-
 .btn-custom:hover {
   background-color: #d2b48c; /* Couleur de fond au survol */
   color: #ffffff; /* Changement de couleur du texte au survol */
   border-color: #d2b48c; /* Changement de couleur de bordure au survol */
+}
+
+/* Styles pour la page d'accueil non authentifiée */
+.home-page-unauthenticated {
+  position: relative; /* Nécessaire pour le pseudo-élément ::before */
+  min-height: 100vh; /* Hauteur minimale égale à la hauteur de la fenêtre */
+  display: flex;
+  justify-content: center; /* Centre le contenu horizontalement */
+  align-items: center; /* Centre le contenu verticalement */
+  text-align: center; /* Centre le texte */
+}
+.home-page-unauthenticated::before {
+  content: ''; /* Contenu vide pour le pseudo-élément */
+  position: absolute; /* Position absolue pour couvrir tout l'élément parent */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('home.jpg'); /* Chemin vers votre image d'arrière-plan */
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone */
+  background-position: center center; /* Centre l'image horizontalement et verticalement */
+  background-attachment: fixed; /* Fixe l'image d'arrière-plan lors du défilement */
+  opacity: 0.4; /* Réglage de l'opacité à 40% */
+  z-index: -1; /* Position en arrière-plan par rapport au contenu */
+}
+
+/* Styles pour le conteneur de contenu non connecté */
+.unconnect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre le contenu verticalement */
+  align-items: center; /* Centre le contenu horizontalement */
+  text-align: center; /* Centre le texte à l'intérieur de la section */
+  height: 100%; /* Utilisation de la hauteur disponible */
+}
+
+/* Styles pour les titres et paragraphes */
+.unconnect h1 {
+  font-size: 22px; /* Taille de police pour le titre h1 */
+  color: #6F4E37;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Ombre pour améliorer la lisibilité */
+}
+.unconnect p {
+  font-size: 17px; /* Taille de police pour les paragraphes */
+  color: #6F4E37;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour améliorer la lisibilité */
 }

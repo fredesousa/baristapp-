@@ -1,8 +1,7 @@
 <div class="container mx-auto ">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
-      <h1 class="text-center">Bienvenue sur notre application de sélection de cafés!</h1>
-
+     
       <% if user_signed_in? %>
         <div class="mt-4">
           <p class="lead">Bienvenue <%= current_user.user_name %>!</p>
@@ -231,11 +230,17 @@
           </div>
         </div>
       <% else %>
-        <div class="mt-4">
-          <p class="lead">Vous n'êtes pas connecté.</p>
-          <%= link_to 'S\'inscrire', new_user_registration_path, class: "btn btn-success mr-2 btn-custom" %>
-          <%= link_to 'Se connecter', new_user_session_path, class: "btn btn-primary btn-custom" %>
-        </div>
+           <div class="home-page-unauthenticated">
+          <!-- Contenu pour les utilisateurs non connectés -->
+          
+          <div class="home-page-unauthenticated">
+  <div class="unconnect">
+    <h1>Bienvenue</h1>
+    <p class="lead">Vous n'êtes pas connecté.</p>
+    <%= link_to 'S\'inscrire', new_user_registration_path, class: "mr-2 btn-custom" %>
+    <%= link_to 'Se connecter', new_user_session_path, class: "btn-custom" %>
+  </div>
+</div>
       <% end %>
     </div>
   </div>

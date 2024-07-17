@@ -1,21 +1,40 @@
 .footer {
-  background-color: #f2efea; /* Couleur brune pour un thème café */
-  box-shadow: 0 1px 4px 0 rgba(30, 30, 30, 0.2); /* Ombre légère */
-  padding: 1rem 0; /* Reduced padding for smaller height */
-  color: black; /* Text color */
-}
-
-.main-content {
-  flex: 1 0 auto;
-}
-
-a{
-  text-decoration: none;
-  color: black;
+  background-color: #f8f9fa; /* Couleur de fond du footer */
+  padding: 20px 0; /* Espacement vertical du footer */
 }
 
 .footer-logo {
-  height: 100px; /* Ajustez la hauteur selon vos besoins */
-  width: auto; /* Pour garder les proportions */
-  margin-bottom: 0.5rem;
+  max-width: 100px; /* Taille maximale du logo */
+}
+
+.footer h5 {
+  color: #6F4E37; /* Couleur des titres */
+}
+
+.footer ul {
+  padding-left: 0; /* Retire le padding par défaut des listes */
+}
+
+.footer li {
+  list-style: none; /* Retire les puces des listes */
+}
+
+.footer a {
+  color: #6F4E37; /* Couleur des liens */
+  text-decoration: none; /* Retire la soulignement des liens */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Ajoute la soulignement au survol */
+}
+
+@media (max-width: 768px) {
+  .footer .row {
+    flex-direction: row; /* Assurez-vous que les éléments restent en ligne sur les petits écrans */
+    flex-wrap: wrap; /* Permet au contenu de se réorganiser sur plusieurs lignes si nécessaire */
+  }
+  .footer .col-6 {
+    max-width: 50%; /* Assure que chaque élément prend 50% de la largeur sur les petits écrans */
+    flex: 0 0 50%; /* Assure que chaque élément prend 50% de la largeur sur les petits écrans */
+  }
 }
