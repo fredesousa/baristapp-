@@ -1,17 +1,31 @@
 /* Définition de la classe pour les boutons personnalisés */
-.btn-custom {
-  background-color: #ffffff; /* Couleur de fond */
-  color: #6F4E37; /* Couleur du texte */
-  border: 1px solid #d2b48c; /* Bordure */
-  border-radius: 5px; /* Arrondi des coins */
-  padding: 10px 20px; /* Espacement interne */
-  transition: background-color 0.3s ease; /* Transition douce pour le survol */
-  margin-top: 10px;
-  margin-right: 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.btn-custom:hover {
-  background-color: #d2b48c; /* Couleur de fond au survol */
-  color: #ffffff; /* Changement de couleur du texte au survol */
-  border-color: #d2b48c; /* Changement de couleur de bordure au survol */
+.section {
+  flex: 1;
+}
+
+.top-section {
+  flex: 80%;
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-section {
+  flex: 20%;
+  background-color: lightcoral;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
