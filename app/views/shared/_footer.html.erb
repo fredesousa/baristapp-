@@ -1,10 +1,8 @@
-<footer class="footer mt-auto py-2 ">
+<footer class="footer mt-auto py-2">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center mb-2">
-        <%= link_to root_path do %>
-          <%= image_tag "", alt: "Logo", class: "logo img-fluid" %>
-        <% end %>
+        <%= link_to root_path do %><%= image_tag "https://res-console.cloudinary.com/di6bk4n9x/thumbnails/v1/image/upload/v1721207394/QmFyaXN0X2FwcF9ub2JhY2tncm91bmRfbWRqd2hz/drilldown", alt: "Logo", class: "footer-logo" %><% end %>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -13,7 +11,6 @@
           <div class="col-sm-6 mb-2">
             <h5>Liens Utiles</h5>
             <ul class="list-unstyled">
-             
               <li><%= link_to "Notre Sélection" %></li>
               <li><%= link_to "À Propos" %></li>
             </ul>

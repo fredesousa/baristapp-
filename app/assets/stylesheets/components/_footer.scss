@@ -1,7 +1,8 @@
 .footer {
-  background-color:#6f4e37; /* Same as the navbar background color */
+  background-color: #f2efea; /* Couleur brune pour un thème café */
+  box-shadow: 0 1px 4px 0 rgba(30, 30, 30, 0.2); /* Ombre légère */
   padding: 1rem 0; /* Reduced padding for smaller height */
-  color: white; /* Text color */
+  color: black; /* Text color */
 }
 
 .main-content {
@@ -10,5 +11,11 @@
 
 a{
   text-decoration: none;
-  color: white;
+  color: black;
+}
+
+.footer-logo {
+  height: 100px; /* Ajustez la hauteur selon vos besoins */
+  width: auto; /* Pour garder les proportions */
+  margin-bottom: 0.5rem;
 }
