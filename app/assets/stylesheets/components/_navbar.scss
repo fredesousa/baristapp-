@@ -1,50 +1,63 @@
+/* Navbar Café */
 .navbar-cafe {
-  background-color: #f2efea; /* Couleur brune pour un thème café */
-  box-shadow: 0 1px 4px 0 rgba(30, 30, 30, 0.2); /* Ombre légère */
+  background-color: #f2efea;
+  box-shadow: 0 1px 4px 0 rgba(30, 30, 30, 0.2);
+  width: 100%;
+  padding: 0 20px; /* Ajout de marges latérales */
+  margin: 0;
 }
 
+/* Branding */
 .navbar-brand {
   color: #ffffff;
   font-size: 1.5rem;
 }
 
+/* Navbar Links */
 .nav-link {
   color: black;
-  
-  &:hover {
-    color: #d3b092; /* Couleur plus claire pour les survols */
-  }
 }
 
+.nav-link:hover {
+  color: #d3b092;
+}
+
+/* Dropdown Menu */
 .dropdown-menu {
   background-color: #6f4e37;
-  
-  .dropdown-item {
-    color: #ffffff;
-    
-    &:hover {
-      background-color: #d3b092;
-      color: #6f4e37;
-    }
-  }
+  font-size: 14px; /* Réduire la taille de la police */
+  border-radius: 8px; /* Ajouter des coins arrondis */
 }
 
+.dropdown-item {
+  color: #ffffff;
+}
+
+.dropdown-item:hover {
+  background-color: #d3b092;
+  color: #6f4e37;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 576px) {
   .navbar {
-    flex-wrap: nowrap; /* Empêche le collapse de la barre de navigation */
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0 20px; /* Ajout de marges latérales */
+    margin: 0;
   }
   
   .navbar-collapse {
-    display: flex !important; /* Affiche toujours la barre de navigation sur les petits écrans */
+    display: flex !important;
   }
   
   .navbar-nav {
-    flex-direction: row; /* Affiche les éléments en ligne sur les petits écrans */
-    align-items: center; /* Centre les éléments verticalement */
+    flex-direction: row;
+    align-items: center;
   }
   
   .dropdown-menu {
-    position: absolute; /* Position absolue pour afficher le dropdown */
+    position: absolute;
     top: 100%;
     right: 0;
     background-color: #6f4e37;
@@ -52,46 +65,66 @@
   }
 }
 
+/* Logo */
 .navbar-logo {
-  height: 60px; /* Ajustez la hauteur selon vos besoins */
-  width: auto; /* Pour garder les proportions */
+  height: 60px;
+  width: auto;
   margin-bottom: 0.5rem;
 }
 
+/* Navbar Items */
 .navbar-cafe .nav-item {
   display: flex;
   align-items: center;
-  flex-direction: column; /* Disposition en colonne pour aligner les éléments */
 }
 
-.avatar {
-  margin-bottom: 0.5rem;
-}
-
-/* Style pour centrer le champ de recherche */
-.navbar-cafe .justify-content-center {
-  flex-grow: 1;
-}
-
+/* Search Input */
 .search-input {
-  border-radius: 20px; /* Bordures arrondies */
-  padding: 0.5rem; /* Réduire l'espacement intérieur */
-  border: 1px solid #ccc; /* Bordure de couleur grise */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  transition: all 0.3s ease; /* Transition douce pour les effets de survol */
-  width: 200px;
+  border-radius: 20px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
   height: 25px;
   font-weight: 8px;
   text-align: center;
 }
 
-/* Style pour le focus */
+/* Focus Effect */
 .search-input:focus {
-  border-color: #007bff; /* Couleur de la bordure lors du focus */
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.25); /* Ombre lors du focus */
-  outline: none; /* Suppression de l'effet outline par défaut */
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.25);
+  outline: none;
 }
 
+/* Icons */
 .navbar-cafe .nav-item .icon-40 {
-  color: #000000; /* Couleur noire pour les icônes */
+  color: #000000;
+}
+
+/* Utility Classes */
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+/* Centering the Search Bar */
+.search-bar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

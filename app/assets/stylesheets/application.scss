@@ -12,7 +12,9 @@
 @import "pages/index";
 
 /* app/assets/stylesheets/application.scss */
-
+body{
+  background-color: #6f4e376b;
+}
 
   /* Fallback color */
   
@@ -28,10 +30,11 @@
 /* css du form */
 
 .custom-background {
-  background-color: #e6e6e6; /* Couleur de fond légèrement plus foncée du form */ 
+  background-color: #f3eae3; /* Couleur de fond légèrement plus foncée du form */ 
   padding: 20px;
-  
-  background-image: linear-gradient(to bottom, #cecdcd3d, #e6e6e6); /* Fondu du blanc (#ffffff) vers le brun (#e6e6e6) */
+  color: #a5836ac9;
+  font-weight: bold;
+  background-image: linear-gradient(to bottom, #f3eae3, #e6e6e6); /* Fondu du blanc (#ffffff) vers le brun (#e6e6e6) */
 
 }
 

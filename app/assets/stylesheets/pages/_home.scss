@@ -7,6 +7,7 @@
   padding: 8px 15px; /* Espacement interne */
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
   margin: 10px; /* Espacement autour des boutons */
+  text-decoration: none;
 }
 .btn-custom:hover {
   background-color: #d2b48c; /* Couleur de fond au survol */
@@ -40,7 +41,7 @@
 
 /* Styles pour le conteneur de contenu non connecté */
 .unconnect {
-  display: flex;
+  
   flex-direction: column;
   justify-content: center; /* Centre le contenu verticalement */
   align-items: center; /* Centre le contenu horizontalement */
@@ -51,11 +52,22 @@
 /* Styles pour les titres et paragraphes */
 .unconnect h1 {
   font-size: 22px; /* Taille de police pour le titre h1 */
-  color: #6F4E37;
+  color: #f3eae3;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Ombre pour améliorer la lisibilité */
+  font-weight: bold;
 }
 .unconnect p {
   font-size: 17px; /* Taille de police pour les paragraphes */
-  color: #6F4E37;
+  color: #f3eae3;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour améliorer la lisibilité */
+  font-weight: bold;
+}
+
+.welcome{
+  text-align: center;
+  color: #f3eae3;
+}
+
+.full-height {
+  height: 100vh;
 }

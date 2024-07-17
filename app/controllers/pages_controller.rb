@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
+    @show_navbar = user_signed_in?
   end
 end
