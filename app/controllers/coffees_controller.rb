@@ -14,9 +14,9 @@ class CoffeesController < ApplicationController
     end
 
     # Filtrage par origine
-    if params[:search_origin].present?
+    if params[:origin].present?
       @filters_applied = true
-      @coffees_by_origin.select! { |origin, _| origin == params[:search_origin] }
+      @coffees_by_origin.select! { |origin, _| origin == params[:origin] }
     end
 
     # Filtrage par force du café
@@ -28,18 +28,18 @@ class CoffeesController < ApplicationController
     end
 
     # Filtrage par type de café
-    if params[:search_coffee_type].present?
+    if params[:coffee_type].present?
       @filters_applied = true
       @coffees_by_origin.each do |origin, coffees|
-        @coffees_by_origin[origin] = coffees.select { |coffee| coffee.coffee_type == params[:search_coffee_type] }
+        @coffees_by_origin[origin] = coffees.select { |coffee| coffee.coffee_type == params[:coffee_type] }
       end
     end
 
     # Filtrage par type de machine
-    if params[:search_machin_type].present?
+    if params[:machin_type].present?
       @filters_applied = true
       @coffees_by_origin.each do |origin, coffees|
-        @coffees_by_origin[origin] = coffees.select { |coffee| coffee.machin_type == params[:search_machin_type] }
+        @coffees_by_origin[origin] = coffees.select { |coffee| coffee.machin_type == params[:machin_type] }
       end
     end
   end

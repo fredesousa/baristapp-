@@ -12,7 +12,7 @@
 
           <!-- Filtre par origine -->
           <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :search_origin, options_for_select(["Bresil", "Colombie", "Ethiopie", "Jamaïque", "Panama"], params[:search_origin]), include_blank: "Origine", class: "form-control" %>
+            <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control" %>
             <%= submit_tag "Filtrer par origine", class: "btn btn-primary mt-2" %>
           <% end %>
 
@@ -24,13 +24,13 @@
 
           <!-- Filtre par type de café -->
           <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :search_coffee_type, options_for_select(["Arabica", "Robusta"], params[:search_coffee_type]), include_blank: "Type de café", class: "form-control" %>
+            <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control" %>
             <%= submit_tag "Filtrer par type de café", class: "btn btn-primary mt-2" %>
           <% end %>
 
           <!-- Filtre par type de machine -->
           <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :search_machin_type, options_for_select(["Espresso", "Drip", "French Press"], params[:search_machin_type]), include_blank: "Type de machine", class: "form-control" %>
+            <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control" %>
             <%= submit_tag "Filtrer par type de machine", class: "btn btn-primary mt-2" %>
           <% end %>
         </div>

@@ -44,7 +44,7 @@ puts "Created #{User.count} users"
 
 50.times do
   coffee = Coffee.create!(
-    name: Faker::Coffee.name,
+    name: Faker::Coffee.blend_name,
     description: Faker::Coffee.notes,
     origin: Coffee::ORIGINS.sample,
     roaster: Faker::Coffee.origin,

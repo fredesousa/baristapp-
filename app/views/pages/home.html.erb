@@ -66,7 +66,7 @@
                 <% end %>
 
               <% elsif current_user.intermediaire? %>
-                <%= form_with(model: @preference, url: user_preferences_path(current_user), local: true, class: "mt-3") do |form| %>
+                <%= form_with(model: @preference, local: true, class: "mt-3") do |form| %>
                   <div class="form-group">
                     <%= form.label :coffee_form, "Forme de café" %><br>
                     <div class="tag-wrapper">
@@ -138,7 +138,7 @@
                 <% end %>
 
               <% elsif current_user.avance? %>
-                <%= form_with(model: @preference, url: user_preferences_path(current_user), local: true, class: "mt-3") do |form| %>
+                <%= form_with(model: @preference, local: true, class: "mt-3") do |form| %>
                   <div class="form-group">
                     <%= form.label :coffee_form, "Forme de café" %><br>
                     <div class="tag-wrapper">
