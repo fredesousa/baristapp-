@@ -4,7 +4,7 @@
       <!-- Icône de favori au-dessus du logo -->
       <div class="nav-item mb-2"> <!-- Margin bottom pour espacement entre les éléments -->
         <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "https://res-console.cloudinary.com/di6bk4n9x/thumbnails/v1/image/upload/v1721207394/QmFyaXN0X2FwcF9ub2JhY2tncm91bmRfbWRqd2hz/drilldown", alt: "Logo", class: "navbar-logo" %> <!-- Remplacer par le chemin de votre image -->
+          <%= cl_image_tag("https://res-console.cloudinary.com/di6bk4n9x/thumbnails/v1/image/upload/v1721207394/QmFyaXN0X2FwcF9ub2JhY2tncm91bmRfbWRqd2hz/drilldown", alt: "Logo", class: "navbar-logo") %> <!-- Remplacer par le chemin de votre image -->
         <% end %>
         <a href="" class="nav-link">
           <i class="fa-regular fa-heart icon-40"></i> <!-- Icône de favori -->
@@ -26,7 +26,7 @@
         <!-- Dropdown à droite de la barre de navigation -->
         <div class="dropdown">
           <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <%= cl_image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu") %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
