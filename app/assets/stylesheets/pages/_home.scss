@@ -24,20 +24,27 @@
   align-items: center; /* Centre le contenu verticalement */
   text-align: center; /* Centre le texte */
 }
+
+.home-page-unauthenticated {
+  position: relative;
+  z-index: 0;
+}
+
 .home-page-unauthenticated::before {
-  content: ''; /* Contenu vide pour le pseudo-élément */
-  position: absolute; /* Position absolue pour couvrir tout l'élément parent */
+  content: '';
+  position: fixed; /* Utiliser 'fixed' au lieu de 'absolute' pour que l'image reste fixe lors du défilement */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('home.jpg'); /* Chemin vers votre image d'arrière-plan */
+  background-image: url('home.jpg'); /* Chemin vers ton image d'arrière-plan */
   background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone */
   background-position: center center; /* Centre l'image horizontalement et verticalement */
   background-attachment: fixed; /* Fixe l'image d'arrière-plan lors du défilement */
   opacity: 0.4; /* Réglage de l'opacité à 40% */
   z-index: -1; /* Position en arrière-plan par rapport au contenu */
 }
+
 
 /* Styles pour le conteneur de contenu non connecté */
 .unconnect {

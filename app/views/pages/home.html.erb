@@ -1,7 +1,6 @@
-<div class="container d-flex align-items-center justify-content-center full-height">
+<div class="container-fluid d-flex align-items-center justify-content-center full-height">
   <div class="row justify-content-center w-100">
-    <div class="col-md-8 col-lg-6">
-     
+    <div class="col-12">
       <% if user_signed_in? %>
         <div class="">
           <p class="lead welcome">Bienvenue <%= current_user.user_name %>!</p>
@@ -245,4 +244,3 @@
     </div>
   </div>
 </div>
-

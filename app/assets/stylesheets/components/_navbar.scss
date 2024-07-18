@@ -1,10 +1,11 @@
-/* Navbar Café */
+/* Styles pour la Navbar Café */
 .navbar-cafe {
   background-color: #f2efea;
   box-shadow: 0 1px 4px 0 rgba(30, 30, 30, 0.2);
   width: 100%;
-  padding: 0 20px; /* Ajout de marges latérales */
+  padding: 0 20px;
   margin: 0;
+ 
 }
 
 /* Branding */
@@ -25,8 +26,8 @@
 /* Dropdown Menu */
 .dropdown-menu {
   background-color: #6f4e37;
-  font-size: 14px; /* Réduire la taille de la police */
-  border-radius: 8px; /* Ajouter des coins arrondis */
+  font-size: 14px;
+  border-radius: 8px;
 }
 
 .dropdown-item {
@@ -43,7 +44,7 @@
   .navbar {
     flex-wrap: nowrap;
     width: 100%;
-    padding: 0 20px; /* Ajout de marges latérales */
+    padding: 0 20px;
     margin: 0;
   }
   
@@ -67,7 +68,7 @@
 
 /* Logo */
 .navbar-logo {
-  height: 60px;
+  height: 110px;
   width: auto;
   margin-bottom: 0.5rem;
 }
