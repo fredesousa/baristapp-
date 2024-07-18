@@ -1,28 +1,24 @@
 <footer class="footer mt-auto py-2">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center mb-2">
-        <%= link_to root_path do %><%= cl_image_tag "https://res-console.cloudinary.com/di6bk4n9x/thumbnails/v1/image/upload/v1721207394/QmFyaXN0X2FwcF9ub2JhY2tncm91bmRfbWRqd2hz/drilldown", alt: "Logo", class: "footer-logo" %><% end %>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-6 col-md-2 text-center mb-2">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png", alt: "Logo", class: "footer-logo" %>
+        <% end %>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-sm-6 mb-2">
-            <h5>Liens Utiles</h5>
-            <ul class="list-unstyled">
-              <li><%= link_to "Notre Sélection" %></li>
-              <li><%= link_to "À Propos" %></li>
-            </ul>
-          </div>
-          <div class="col-sm-6 mb-2">
-            <h5>Contactez-nous</h5>
-            <ul class="list-unstyled">
-              <li>Email: contact@votrecafe.com</li>
-              <li>Téléphone: +1234567890</li>
-            </ul>
-          </div>
-        </div>
+      <div class="col-6 col-md-3 mb-2">
+        <h5>Liens Utiles</h5>
+        <ul class="list-unstyled">
+          <li><%= link_to "Notre Sélection", "#" %></li>
+          <li><%= link_to "À Propos", "#" %></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 mb-2">
+        <h5>Contactez-nous</h5>
+        <ul class="list-unstyled">
+          <li>Email: contact@votrecafe.com</li>
+          <li>Téléphone: +1234567890</li>
+        </ul>
       </div>
     </div>
   </div>

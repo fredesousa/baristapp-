@@ -1,45 +1,44 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-cafe">
-  <div class="container container-fluid">
-    <div class="d-flex flex-column align-items-start"> <!-- Utilisation de flexbox en colonne pour aligner les éléments -->
-      <!-- Icône de favori au-dessus du logo -->
-      <div class="nav-item mb-2"> <!-- Margin bottom pour espacement entre les éléments -->
+<% if user_signed_in? %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-cafe">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- Section gauche avec le logo -->
+      <div class="d-flex align-items-center">
         <%= link_to root_path, class: "navbar-brand" do %>
-          <%= cl_image_tag("https://res-console.cloudinary.com/di6bk4n9x/thumbnails/v1/image/upload/v1721207394/QmFyaXN0X2FwcF9ub2JhY2tncm91bmRfbWRqd2hz/drilldown", alt: "Logo", class: "navbar-logo") %> <!-- Remplacer par le chemin de votre image -->
+          <%= image_tag("logo.png", alt: "Logo", class: "navbar-logo") %>
         <% end %>
-        <a href="" class="nav-link">
-          <i class="fa-regular fa-heart icon-40"></i> <!-- Icône de favori -->
+      </div>
+
+      <!-- Champ de recherche centré avec icône de favori à gauche et icône de recherche à droite -->
+      <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
+        <a href="#" class="nav-link icon-container">
+          <i class="fa-regular fa-heart icon-40"></i>
+        </a>
+        <div class="nav-item">
+          <%= form_tag(method: "get", class: "d-flex justify-content-center align-items-center") do %>
+            <input class="form-control search-input" type="search" placeholder="Rechercher" aria-label="Search" name="query">
+          <% end %>
+        </div>
+        <a href="#" class="nav-link icon-container">
+          <i class="fa-solid fa-magnifying-glass icon-40"></i>
         </a>
       </div>
-    </div>
 
-    <!-- Champ de recherche centré -->
-    <div class="d-flex justify-content-center flex-grow-1">
-      <div class="nav-item">
-        <%= form_tag(method: "get", class: "d-flex") do %>
-          <input class="form-control search-input" type="search" placeholder="Chercher un café" aria-label="Search" name="query">
-        <% end %>
-      </div>
-    </div>
-
-    <% if user_signed_in? %>
-      <div class="nav-item ms-auto"> <!-- Utilisation de ms-auto pour pousser vers la droite -->
-        <!-- Dropdown à droite de la barre de navigation -->
+      <!-- Section droite avec les liens de navigation -->
+      <div class="d-flex align-items-center">
         <div class="dropdown">
           <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= cl_image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu") %>
+            <%= image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu") %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </div>
-          <a href="" class="nav-link">
-            <i class="fa-solid fa-magnifying-glass icon-40"></i>
-          </a>
         </div>
       </div>
-    <% else %>
-      <div class="nav-item ms-auto"> <!-- Utilisation de ms-auto pour pousser vers la droite -->
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      </div>
-    <% end %>
+    </div>
   </div>
+<% end %>
+
+<!-- Contenu de la page -->
+<div class="page-content">
+  <!-- Votre contenu de page ici, y compris les boutons "Se connecter" et "S'inscrire" -->
 </div>
