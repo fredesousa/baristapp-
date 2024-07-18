@@ -5,6 +5,30 @@ class CoffeesController < ApplicationController
     @coffees_by_coffee_type = Coffee.all.group_by(&:coffee_type)
     @filters_applied = false
 
+    if params[:search].present?
+      @coffees = Coffee.where("name ILIKE ?", "%#{params[:search]}%")
+      @filters_applied = true
+      @filter_name = "Nom: #{params[:search]}"
+    elsif params[:origin].present?
+      @coffees = Coffee.where(origin: params[:origin])
+      @filters_applied = true
+      @filter_name = "Origine: #{params[:origin]}"
+    elsif params[:search_strength].present?
+      @coffees = Coffee.where(strength: params[:search_strength])
+      @filters_applied = true
+      @filter_name = "Force du café: #{params[:search_strength]}"
+    elsif params[:coffee_type].present?
+      @coffees = Coffee.where(coffee_type: params[:coffee_type])
+      @filters_applied = true
+      @filter_name = "Type de café: #{params[:coffee_type]}"
+    elsif params[:machin_type].present?
+      @coffees = Coffee.where(machin_type: params[:machin_type])
+      @filters_applied = true
+      @filter_name = "Type de machine: #{params[:machin_type]}"
+    else
+      @coffees = Coffee.all
+    end
+
     # Filtrage par recherche de nom
     if params[:search].present?
       @filters_applied = true
