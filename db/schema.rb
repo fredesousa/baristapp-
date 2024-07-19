@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_16_214554) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_19_100314) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_214554) do
   create_table "coffees", force: :cascade do |t|
     t.string "name"
     t.string "origin"
-    t.string "roaster"
+    t.string "brewing_method"
     t.text "description"
     t.string "strength"
     t.string "coffee_type"
@@ -68,6 +68,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_214554) do
     t.bigint "coffee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "coffee_form", default: [], array: true
+    t.integer "weekly_consumption", default: [], array: true
+    t.string "coffee_type", default: [], array: true
     t.index ["coffee_id"], name: "index_preferences_on_coffee_id"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end

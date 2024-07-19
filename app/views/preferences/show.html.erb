@@ -1,0 +1,17 @@
+<div class="container mx-auto">
+  <h1>Vos préférences de café</h1>
+  <p><strong>Forme de café :</strong> <%= @preference.coffee_form %></p>
+  <p><strong>Nombre de cafés par semaine :</strong> <%= @preference.weekly_consumption %></p>
+  <p><strong>Type de café :</strong> <%= @preference.coffee_type %></p>
+
+  <h2>Résultats correspondants</h2>
+  <% if @coffees.any? %>
+    <ul>
+      <% @coffees.each do |coffee| %>
+        <li><%= coffee.name %> - <%= coffee.description %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Aucun café ne correspond à vos préférences.</p>
+  <% end %>
+</div>
