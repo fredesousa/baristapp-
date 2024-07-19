@@ -17,6 +17,13 @@
             <li class="list-group-item"><strong>Force :</strong> <%= @coffee.strength %></li>
             <!-- Ajoutez d'autres informations spécifiques au café -->
           </ul>
+          <div class="mt-3">
+            <% if current_user.favorites.include?(@coffee) %>
+              <%= button_to 'Supprimer des favoris', coffee_favorite_path(@coffee), method: :delete, class: 'btn btn-danger' %>
+            <% else %>
+              <i class="fa-solid fa-heart"><%= button_to 'Ajouter aux favoris', coffee_favorite_path(@coffee), method: :post, class: 'btn btn-primary' %></i>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
