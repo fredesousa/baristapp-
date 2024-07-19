@@ -35,7 +35,6 @@
 .card-body {
   padding: 1.25rem; /* Espacement interne */
   background-color: rgba(255, 255, 255, 0.9); /* Fond légèrement opaque pour améliorer la lisibilité */
-
 }
 
 .card-img-top {
@@ -54,15 +53,6 @@
   font-weight: bold; /* Poids de la police */
   text-align: center; /* Alignement du texte */
   margin-bottom: 1rem; /* Espace en bas du titre */
-}
-
-/* Ajouter un effet d'ombre au texte pour le faire ressortir */
-.card-carousel-header h2 {
-  color: #333; /* Changer la couleur du texte */
-  font-size: 1.5rem; /* Taille de police */
-  font-weight: bold; /* Poids de la police */
-  text-align: center; /* Alignement du texte */
-  margin-bottom: 1rem; /* Espace en bas du titre */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Ombre légère */
 }
 
@@ -73,4 +63,3 @@
   font-style: italic; /* Style de police en italique */
   text-align: center; /* Alignement du texte */
 }
-
