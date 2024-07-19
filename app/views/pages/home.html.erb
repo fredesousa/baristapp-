@@ -9,237 +9,80 @@
             <div class="card-body custom-background">
               <h2 class="card-title text-center">Choisissez vos préférences de café</h2>
 
-              <% if current_user.debutant? %>
-                <%= form_with(model: @preference, local: true, class: "") do |form| %>
+                <%= form_with(url: coffees_path, method: :get, local: true, class: "mt-3") do |form| %>
                   <div class="form-group">
-                    <%= form.label :coffee_form, "Forme de café" %><br>
+                    <%= form.label :machin_type, "Quel type de Machine utilises-tu ?" %><br>
                     <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_form, { multiple: true, class: 'tag-selector', id: 'coffee_form_capsule' }, 'Capsule' %>
-                        <label for="coffee_form_capsule">Capsule</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_form, { multiple: true, class: 'tag-selector', id: 'coffee_form_grain' }, 'Grain' %>
-                        <label for="coffee_form_grain">Grain</label>
-                      </div>
+                      <% Coffee::MACHINS_TYPE.each do |machin_type| %>
+                       <div class="tag-item">
+                         <%= form.radio_button :machin_type, machin_type %>
+                         <%= form.label :machin_type, machin_type %>
+                       </div>
+                      <% end %>
                     </div>
                   </div>
 
+
                   <div class="form-group">
-                    <%= form.label :weekly_consumption, "Nombre de cafés par semaine" %><br>
+                    <%= form.label :coffee_type, " Quel Type de café préfères-tu ?" %><br>
                     <div class="tag-wrapper">
+                      <% Coffee::COFFEES_TYPE.each do |coffee_type| %>
                       <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_2' }, '2' %>
-                        <label for="weekly_consumption_2">2</label>
+                        <%= form.radio_button :coffee_type, coffee_type %>
+                        <%= form.label :coffee_type, coffee_type %>
                       </div>
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_4' }, '4' %>
-                        <label for="weekly_consumption_4">4</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_6' }, 'Plus de 6' %>
-                        <label for="weekly_consumption_6">Plus de 6</label>
-                      </div>
+                    <% end %>
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <%= form.label :coffee_type, "Type de café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_type, { multiple: true, class: 'tag-selector', id: 'coffee_type_arabica' }, 'Arabica' %>
-                        <label for="coffee_type_arabica">Arabica</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_type, { multiple: true, class: 'tag-selector', id: 'coffee_type_robusta' }, 'Robusta' %>
-                        <label for="coffee_type_robusta">Robusta</label>
+
+
+                  <% if current_user.intermediaire? || current_user.avance? %>
+                    <div class="form-group">
+                      <%= form.label :coffee_origin, "Quelle Origine de café aimes-tu ?" %><br>
+                      <div class="tag-wrapper">
+                      <% Coffee::ORIGINS.each do |origin| %>
+                        <div class="tag-item">
+                          <%= form.radio_button :origin, origin %>
+                          <%= form.label :coffee_origin, origin %>
+                        </div>
+                      <% end %>
                       </div>
                     </div>
-                  </div>
-
+                  <% end %>
+                  <% if current_user.avance? %>
+                    <div class="form-group">
+                      <%= form.label :brewing_method, "Quelle est ta méthode de préparation préférée ?" %><br>
+                      <div class="tag-wrapper">
+                        <% Coffee::BREWING_METHODS.each do |brewing_method| %>
+                        <div class="tag-item">
+                          <%= form.radio_button :brewing_method, brewing_method %>
+                          <%= form.label :brewing_method, brewing_method %>
+                        </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
                   <div class="form-group mb-4">
                     <%= form.submit "Enregistrer", class: "btn btn-custom" %>
                     <%= link_to "Remettre à plus tard", coffees_path, class: "btn btn-secondary btn-custom ml-2" %>
                   </div>
                 <% end %>
-
-              <% elsif current_user.intermediaire? %>
-                <%= form_with(model: @preference, local: true, class: "mt-3") do |form| %>
-                  <div class="form-group">
-                    <%= form.label :coffee_form, "Forme de café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_form, { multiple: true, class: 'tag-selector', id: 'coffee_form_capsule' }, 'Capsule' %>
-                        <label for="coffee_form_capsule">Capsule</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_form, { multiple: true, class: 'tag-selector', id: 'coffee_form_grain' }, 'Grain' %>
-                        <label for="coffee_form_grain">Grain</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :weekly_consumption, "Nombre de cafés par semaine" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_2' }, '2' %>
-                        <label for="weekly_consumption_2">2</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_4' }, '4' %>
-                        <label for="weekly_consumption_4">4</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_6' }, 'Plus de 6' %>
-                        <label for="weekly_consumption_6">Plus de 6</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :coffee_type, "Type de café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_type, { multiple: true, class: 'tag-selector', id: 'coffee_type_arabica' }, 'Arabica' %>
-                        <label for="coffee_type_arabica">Arabica</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_type, { multiple: true, class: 'tag-selector', id: 'coffee_type_robusta' }, 'Robusta' %>
-                        <label for="coffee_type_robusta">Robusta</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :coffee_origin, "Origine du café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_origin, { multiple: true, class: 'tag-selector', id: 'coffee_origin_bresil' }, 'Brésil' %>
-                        <label for="coffee_origin_bresil">Brésil</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_origin, { multiple: true, class: 'tag-selector', id: 'coffee_origin_colombie' }, 'Colombie' %>
-                        <label for="coffee_origin_colombie">Colombie</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_origin, { multiple: true, class: 'tag-selector', id: 'coffee_origin_ethiopie' }, 'Éthiopie' %>
-                        <label for="coffee_origin_ethiopie">Éthiopie</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <%= form.submit "Enregistrer", class: "btn btn-custom" %>
-                    <%= link_to "Remettre à plus tard", coffees_path, class: "btn btn-secondary btn-custom ml-2" %>
-                  </div>
-                <% end %>
-
-              <% elsif current_user.avance? %>
-                <%= form_with(model: @preference, local: true, class: "mt-3") do |form| %>
-                  <div class="form-group">
-                    <%= form.label :coffee_form, "Forme de café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_form, { multiple: true, class: 'tag-selector', id: 'coffee_form_capsule' }, 'Capsule' %>
-                        <label for="coffee_form_capsule">Capsule</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_form, { multiple: true, class: 'tag-selector', id: 'coffee_form_grain' }, 'Grain' %>
-                        <label for="coffee_form_grain">Grain</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :weekly_consumption, "Nombre de cafés par semaine" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_2' }, '2' %>
-                        <label for="weekly_consumption_2">2</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_4' }, '4' %>
-                        <label for="weekly_consumption_4">4</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :weekly_consumption, { multiple: true, class: 'tag-selector', id: 'weekly_consumption_6' }, 'Plus de 6' %>
-                        <label for="weekly_consumption_6">Plus de 6</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :coffee_type, "Type de café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_type, { multiple: true, class: 'tag-selector', id: 'coffee_type_arabica' }, 'Arabica' %>
-                        <label for="coffee_type_arabica">Arabica</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_type, { multiple: true, class: 'tag-selector', id: 'coffee_type_robusta' }, 'Robusta' %>
-                        <label for="coffee_type_robusta">Robusta</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :coffee_origin, "Origine du café" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_origin, { multiple: true, class: 'tag-selector', id: 'coffee_origin_bresil' }, 'Brésil' %>
-                        <label for="coffee_origin_bresil">Brésil</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_origin, { multiple: true, class: 'tag-selector', id: 'coffee_origin_colombie' }, 'Colombie' %>
-                        <label for="coffee_origin_colombie">Colombie</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :coffee_origin, { multiple: true, class: 'tag-selector', id: 'coffee_origin_ethiopie' }, 'Éthiopie' %>
-                        <label for="coffee_origin_ethiopie">Éthiopie</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :brewing_method, "Méthode de préparation préférée" %><br>
-                    <div class="tag-wrapper">
-                      <div class="tag-item">
-                        <%= form.check_box :brewing_method, { multiple: true, class: 'tag-selector', id: 'brewing_method_espresso' }, 'Espresso' %>
-                        <label for="brewing_method_espresso">Espresso</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :brewing_method, { multiple: true, class: 'tag-selector', id: 'brewing_method_filtre' }, 'Filtre' %>
-                        <label for="brewing_method_filtre">Filtre</label>
-                      </div>
-                      <div class="tag-item">
-                        <%= form.check_box :brewing_method, { multiple: true, class: 'tag-selector', id: 'brewing_method_aeropress' }, 'Aeropress' %>
-                        <label for="brewing_method_aeropress">Aeropress</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-4">
-                    <%= form.submit "Enregistrer", class: "btn btn-custom" %>
-                    <%= link_to "Remettre à plus tard", coffees_path, class: "btn btn-secondary btn-custom ml-2" %>
-                  </div>
-                <% end %>
-              <% end %>
             </div>
           </div>
         </div>
       <% else %>
-           <div class="home-page-unauthenticated">
+        <div class="home-page-unauthenticated">
+
           <!-- Contenu pour les utilisateurs non connectés -->
-          
           <div class="home-page-unauthenticated">
-  <div class="unconnect">
-    <h1>Bienvenue</h1>
-    <p class="lead">Vous n'êtes pas connecté.</p>
-    <%= link_to 'S\'inscrire', new_user_registration_path, class: "mr-2 btn-custom" %>
-    <%= link_to 'Se connecter', new_user_session_path, class: "btn-custom" %>
-  </div>
-</div>
+            <div class="unconnect">
+              <h1>Bienvenue</h1>
+              <p class="lead">Vous n'êtes pas connecté.</p>
+              <%= link_to 'S\'inscrire', new_user_registration_path, class: "mr-2 btn-custom" %>
+              <%= link_to 'Se connecter', new_user_session_path, class: "btn-custom" %>
+            </div>
+          </div>
       <% end %>
     </div>
   </div>

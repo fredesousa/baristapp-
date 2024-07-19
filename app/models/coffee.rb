@@ -9,11 +9,11 @@ class Coffee < ApplicationRecord
   MACHINS_TYPE = ['Espresso', 'Filtre', 'Chemex', 'Cafetière', 'Machine à grain'].freeze
   COFFEES_TYPE = ['Arabica', 'Robusta'].freeze
   ORIGINS = ['Costa Rica', 'Bresil', 'Madacascar', 'Ethiopie', 'Mexique', 'Perou', 'Guatemala'].freeze
-
+  BREWING_METHODS = ['Aeropress', 'V60', 'Cold Brew', 'Moka Pot', 'Pour Over'].freeze
   # Validations
   validates :name, presence: true
   validates :origin, inclusion: { in: ORIGINS }
-  validates :roaster, presence: true
+  validates :brewing_method, presence: true
   validates :strength, presence: true
   validates :coffee_type, inclusion: { in: COFFEES_TYPE }
   validates :machin_type, inclusion: { in: MACHINS_TYPE }
