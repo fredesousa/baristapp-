@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root to: 'pages#home'
-  resources :coffees, only: [:index, :show, :new, :create, :edit, :update]
+  resources :coffees, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :favorite, only: [:create, :destroy]
+  end
 end

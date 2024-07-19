@@ -1,44 +1,52 @@
-<div class="container mt-4">
+<div class="container-fluid mt-4">
   <div class="row">
     <!-- Colonne des filtres -->
     <div class="col-lg-3 mb-3">
-      <div class="card">
+      <div class="card filter-card">
         <div class="card-body">
           <!-- Barre de recherche -->
           <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Rechercher par nom de café", class: "form-control" %>
-            <%= submit_tag "Rechercher", class: "btn btn-primary mt-2" %>
+            <%= text_field_tag :search, params[:search], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input mb-2" %>
+            <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn center-submit" %>
           <% end %>
 
-          <!-- Filtre par origine -->
-          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control" %>
-            <%= submit_tag "Filtrer par origine", class: "btn btn-primary mt-2" %>
-          <% end %>
+          <!-- Filtre principal -->
+          <div class="mt-3">
+            <%= form_tag coffees_path, method: :get do %>
+              <%= select_tag :filter, options_for_select(["Origine", "Force du café", "Type de café", "Type de machine"], params[:filter]), class: "form-select mb-2 custom-search-input" %>
+              <%= submit_tag "Filtrer", class: "btn btn-custom w-100 custom-search-btn" %>
+            <% end %>
+          </div>
 
-          <!-- Filtre par force du café -->
-          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control" %>
-            <%= submit_tag "Filtrer par force", class: "btn btn-primary mt-2" %>
-          <% end %>
+          <!-- Autres filtres -->
+          <div class="mt-3">
+            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+              <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control custom-search-input mb-2" %>
+              <%= submit_tag "Filtrer par origine", class: "btn btn-custom w-100 custom-search-btn" %>
+            <% end %>
 
-          <!-- Filtre par type de café -->
-          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control" %>
-            <%= submit_tag "Filtrer par type de café", class: "btn btn-primary mt-2" %>
-          <% end %>
+            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+              <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control custom-search-input mb-2" %>
+              <%= submit_tag "Filtrer par force", class: "btn btn-custom w-100 custom-search-btn" %>
+            <% end %>
 
-          <!-- Filtre par type de machine -->
-          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control" %>
-            <%= submit_tag "Filtrer par type de machine", class: "btn btn-primary mt-2" %>
-          <% end %>
+            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+              <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control custom-search-input mb-2" %>
+              <%= submit_tag "Filtrer par type de café", class: "btn btn-custom w-100 custom-search-btn" %>
+            <% end %>
+
+            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
+              <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control custom-search-input mb-2" %>
+              <%= submit_tag "Filtrer par type de machine", class: "btn btn-custom w-100 custom-search-btn" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Colonne des résultats de café -->
     <div class="col-lg-9">
+
   <% if @filters_applied %>
     <h1 class="text-center mb-4">Résultats de la recherche - <%= @filter_name %></h1>
     <div class="row">
@@ -53,9 +61,11 @@
             <div class="card-body d-flex flex-column">
               <h5 class="card-title"><%= coffee.name %></h5>
               <p class="card-text flex-grow-1"><%= coffee.description %></p>
+
             </div>
           </div>
         </div>
+
       <% end %>
     </div>
   <% else %>
@@ -85,6 +95,7 @@
                 </div>
               </div>
             <% end %>
+
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions_<%= origin.parameterize %>" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

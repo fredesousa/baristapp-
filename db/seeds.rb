@@ -1,6 +1,7 @@
 require "open-uri"
 require 'faker'
 
+Preference.destroy_all
 User.destroy_all
 Coffee.destroy_all
 

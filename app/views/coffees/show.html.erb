@@ -4,11 +4,24 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card text-center">
-        <% if @coffee.photo.key.present? %>
-          <div class="card-img-top-wrapper" style="height: 400px; overflow: hidden;">
+        <div class="card-img-top-wrapper position-relative" style="height: 400px; overflow: hidden;">
+          <% if @coffee.photo.key.present? %>
             <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
+          <% end %>
+          <div class="favorite-icon position-absolute bottom-0 end-0 p-3">
+            <% if current_user.favorites.include?(@coffee) %>
+              <!-- Icône de cœur plein pour les cafés favoris -->
+              <%= link_to coffee_favorite_path(@coffee), method: :delete, class: 'text-danger' do %>
+                <i class="fa-solid fa-heart"></i>
+              <% end %>
+            <% else %>
+              <!-- Icône de cœur vide pour les cafés non favoris -->
+              <%= link_to coffee_favorite_path(@coffee), method: :post, class: 'text-primary' do %>
+                <i class="fa-regular fa-heart"></i>
+              <% end %>
+            <% end %>
           </div>
-        <% end %>
+        </div>
         <div class="card-body">
           <h5 class="card-title"><%= @coffee.name %></h5>
           <p class="card-text"><%= @coffee.description %></p>

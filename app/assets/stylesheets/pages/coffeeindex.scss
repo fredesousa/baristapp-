@@ -1,0 +1,76 @@
+/* Styles pour les filtres */
+.filter-card {
+  background: linear-gradient(to bottom right, #ffffff, #f8f9fa); /* Dégradé léger pour le fond des filtres */
+  border: 1px solid #ddd; /* Bordure légère */
+  border-radius: 0.5rem; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour effet de profondeur */
+}
+
+.custom-search-input, .form-select, .form-control {
+  border: 1px solid #d2b48c; /* Bordure */
+  border-radius: 5px; /* Arrondi des coins */
+  padding: 8px 15px; /* Espacement interne */
+  margin-bottom: 10px;
+}
+
+.custom-search-btn {
+  background-color: #ffffff; /* Couleur de fond */
+  color: #6F4E37; /* Couleur du texte */
+  border: 1px solid #d2b48c; /* Bordure */
+  border-radius: 5px; /* Arrondi des coins */
+  padding: 8px 15px; /* Espacement interne */
+  transition: background-color 0.3s ease; /* Transition douce pour le survol */
+  margin: 10px; /* Espacement autour des boutons */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card {
+  background: linear-gradient(to bottom right, #ffffff, #f1f1f1); /* Dégradé léger */
+  border: none; /* Enlève la bordure */
+  border-radius: 0.5rem; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère pour effet de profondeur */
+}
+
+.card-body {
+  padding: 1.25rem; /* Espacement interne */
+  background-color: rgba(255, 255, 255, 0.9); /* Fond légèrement opaque pour améliorer la lisibilité */
+
+}
+
+.card-img-top {
+  border-top-left-radius: 0.5rem; /* Coins arrondis sur le haut de l'image */
+  border-top-right-radius: 0.5rem;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  filter: invert(100%); /* Inverse les couleurs des boutons pour meilleure visibilité */
+}
+
+/* Cible les titres <h2> dans les cartes carrousel */
+.card-carousel-header h2 {
+  color: #333; /* Changer la couleur du texte */
+  font-size: 1.5rem; /* Taille de police */
+  font-weight: bold; /* Poids de la police */
+  text-align: center; /* Alignement du texte */
+  margin-bottom: 1rem; /* Espace en bas du titre */
+}
+
+/* Ajouter un effet d'ombre au texte pour le faire ressortir */
+.card-carousel-header h2 {
+  color: #333; /* Changer la couleur du texte */
+  font-size: 1.5rem; /* Taille de police */
+  font-weight: bold; /* Poids de la police */
+  text-align: center; /* Alignement du texte */
+  margin-bottom: 1rem; /* Espace en bas du titre */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Ombre légère */
+}
+
+/* Cible les descriptions des cartes dans le carrousel */
+.carousel-item .card-body .card-text {
+  color: #d2b48c; /* Change la couleur du texte */
+  font-size: 1rem; /* Taille de la police */
+  font-style: italic; /* Style de police en italique */
+  text-align: center; /* Alignement du texte */
+}
+
