@@ -4,9 +4,7 @@
   color: #6F4E37; /* Couleur du texte */
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
-  padding: 8px 15px; /* Espacement interne */
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
-  margin: 10px; /* Espacement autour des boutons */
   text-decoration: none;
 }
 .btn-custom:hover {
@@ -48,7 +46,7 @@
 
 /* Styles pour le conteneur de contenu non connecté */
 .unconnect {
-  
+
   flex-direction: column;
   justify-content: center; /* Centre le contenu verticalement */
   align-items: center; /* Centre le contenu horizontalement */
@@ -123,4 +121,3 @@
 .tag-wrapper {
   margin-top: 1rem;
 }
-
