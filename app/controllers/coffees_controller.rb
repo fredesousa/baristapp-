@@ -70,6 +70,7 @@ class CoffeesController < ApplicationController
 
   def show
     @coffee = Coffee.find(params[:id])
+    @favorite = current_user.favorites.find_by(coffee: @coffee)
   end
 
   def new
