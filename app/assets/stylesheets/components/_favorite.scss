@@ -1,15 +1,3 @@
-.text-primary i {
-  color: black; /* Couleur pour le cœur vide (ajouter aux favoris) */
-  font-size: 2rem; /* Ajuste la taille de l'icône */
-  cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
-}
-
-.text-danger i {
-  color: #dc3545; /* Couleur pour le cœur plein (supprimer des favoris) */
-  font-size: 2rem; /* Ajuste la taille de l'icône */
-  cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
-}
-
 /* Styles pour l'icône de cœur */
 .card-img-top-wrapper {
   position: relative; /* Nécessaire pour positionner l'icône par rapport à l'image */
@@ -25,4 +13,11 @@
 .text-primary i, .text-danger i {
   font-size: 2rem; /* Ajuste la taille de l'icône */
   cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
+}
+
+.position-in-card {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  color: #f2efea;
 }

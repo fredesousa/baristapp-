@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root to: 'pages#home'
   resources :coffees, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :favorite, only: [:create, :destroy]
+    resources :favorites, only: [:create]
   end
+  resources :favorites, only: [:destroy]
 end
