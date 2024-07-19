@@ -13,7 +13,7 @@ class Coffee < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :origin, inclusion: { in: ORIGINS }
-  validates :brewing_method, presence: true
+  validates :brewing_method, inclusion: { in: BREWING_METHODS }
   validates :strength, presence: true
   validates :coffee_type, inclusion: { in: COFFEES_TYPE }
   validates :machin_type, inclusion: { in: MACHINS_TYPE }
