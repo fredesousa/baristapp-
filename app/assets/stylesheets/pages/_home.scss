@@ -25,11 +25,6 @@
   text-align: center; /* Centre le texte */
 }
 
-.home-page-unauthenticated {
-  position: relative;
-  z-index: 0;
-}
-
 .home-page-unauthenticated::before {
   content: '';
   position: fixed; /* Utiliser 'fixed' au lieu de 'absolute' pour que l'image reste fixe lors du défilement */
@@ -41,36 +36,58 @@
   background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone */
   background-position: center center; /* Centre l'image horizontalement et verticalement */
   background-attachment: fixed; /* Fixe l'image d'arrière-plan lors du défilement */
-  opacity: 0.4; /* Réglage de l'opacité à 40% */
-  z-index: -1; /* Position en arrière-plan par rapport au contenu */
+  opacity: 0.8; /* Réglage de l'opacité à 80% pour un filtre noir léger */
+  z-index: -2; /* Position en arrière-plan par rapport au contenu */
 }
 
+.home-page-unauthenticated::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Filtre noir léger */
+  z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
+}
 
-/* Styles pour le conteneur de contenu non connecté */
-.unconnect {
-  
+/* Conteneur pour le texte et les boutons */
+.content-wrapper {
+  display: flex;
   flex-direction: column;
-  justify-content: center; /* Centre le contenu verticalement */
-  align-items: center; /* Centre le contenu horizontalement */
-  text-align: center; /* Centre le texte à l'intérieur de la section */
-  height: 100%; /* Utilisation de la hauteur disponible */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/* Styles pour les titres et paragraphes */
+/* Styles pour le texte non connecté */
+.unconnect {
+  margin-bottom: 20px; /* Espace entre le texte et les boutons */
+}
+
 .unconnect h1 {
-  font-size: 22px; /* Taille de police pour le titre h1 */
-  color: #f3eae3;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Ombre pour améliorer la lisibilité */
+  font-size: 35px; /* Taille de police pour le titre h1 */
+  background-image: linear-gradient(to right, #796853, #815b40); /* Gradient linéaire */
+  -webkit-background-clip: text; /* Utilisé avec color: transparent */
+  color: transparent; /* Couleur du texte transparent pour voir le gradient */
+  text-shadow: 3px 3px 6px rgba(167, 105, 35, 0.3); /* Ombre pour améliorer la lisibilité */
   font-weight: bold;
 }
+
 .unconnect p {
   font-size: 17px; /* Taille de police pour les paragraphes */
-  color: #f3eae3;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour améliorer la lisibilité */
+  color: #d2b48c;
+  text-shadow: 2px 2px 4px rgba(187, 187, 187, 0.3); /* Ombre pour améliorer la lisibilité */
   font-weight: bold;
 }
 
-.welcome{
+.button-wrapper {
+  margin-top: 30px;
+}
+
+.welcome {
   text-align: center;
   color: #f3eae3;
 }
@@ -79,40 +96,84 @@
   height: 100vh;
 }
 
-/* css du form */
+.authenticated-background {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.authenticated-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('form.jpg'); /* Chemin vers ton image d'arrière-plan */
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.8; /* Réglage de l'opacité de l'image de fond */
+  z-index: -2; /* Position en arrière-plan par rapport au contenu */
+}
+
+.authenticated-background::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Filtre noir léger */
+  z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
+}
+
 .custom-background {
-  background-color: #f3eae3; /* Couleur de fond légèrement plus foncée du form */
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond légèrement transparente */
   padding: 20px;
   color: #a5836ac9;
   font-weight: bold;
-  background-image: linear-gradient(to bottom, #f3eae3, #e6e6e6); /* Fondu du blanc (#ffffff) vers le brun (#e6e6e6) */
+  border-radius: 10px;
+  z-index: 1; /* Assurez-vous que le contenu est au-dessus de l'image de fond */
 }
 
+/* Styles pour les cartes cliquables */
 .tag-item {
   display: inline-block;
+  margin: 10px;
 }
 
-.tag-selector {
-  position: absolute;
-  transform: scale(0);
+.tag-item input[type="radio"] {
+  display: none; /* Cacher les boutons radio */
 }
 
-.tag-selector + label {
+.tag-item label {
   cursor: pointer;
   display: inline-block;
   font-size: 1rem;
   border-radius: 10px;
-  padding: 0.1rem 0.5rem;
+  padding: 10px 15px;
   background-color: #ffffff;
   color: #6F4E37;
   border: 1px solid #d2b48c;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.tag-selector:checked + label {
-  background-color: #8e725e;
-  color: white;
+.tag-item label:hover {
+  background-color: #d2b48c;
+  color: #ffffff;
+  border-color: #d2b48c;
+}
+
+.tag-item input[type="radio"]:checked + label {
+  background-color: #d2b48c;
+  color: #ffffff;
+  border-color: #d2b48c;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
@@ -123,4 +184,3 @@
 .tag-wrapper {
   margin-top: 1rem;
 }
-
