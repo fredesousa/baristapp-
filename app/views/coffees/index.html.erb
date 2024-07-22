@@ -9,7 +9,7 @@
         <%= link_to "Voir tous les cafés", coffees_path, class: "btn btn-custom w-100 custom-search-btn center-submit mb-4" %>
           <!-- Barre de recherche -->
           <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input mb-2" %>
+            <%= text_field_tag :query, params[:query], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input mb-2" %>
             <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn center-submit" %>
           <% end %>
 

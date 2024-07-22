@@ -29,6 +29,13 @@ class CoffeesController < ApplicationController
       @coffees = Coffee.all
     end
 
+    if params[:query].present?
+      @coffees = Coffee.search_by_name(params[:query])
+      @filters_applied = true
+    else
+      @coffees = Coffee.all
+    end
+
     # Filtrage par recherche de nom
     if params[:search].present?
       @filters_applied = true
@@ -86,6 +93,17 @@ class CoffeesController < ApplicationController
     end
   end
 
+  def create_review
+    @coffee = Coffee.find(params[:id])
+    @review = @coffee.reviews.new(review_params)
+    if @review.save
+      redirect_to @coffee_path, notice: 'Review was successfully created.'
+    else
+      render :show
+    end
+  end
+
+
   private
 
   def set_coffee
@@ -95,4 +113,8 @@ class CoffeesController < ApplicationController
   def coffee_params
     params.require(:coffee).permit(:name, :description, :origin, :roaster, :strength, :coffee_type, :machine_type)
   end
+end
+
+def review_params
+  params.require(:review).permit(:content, :rating)
 end
