@@ -78,6 +78,7 @@ class CoffeesController < ApplicationController
   def show
     @coffee = Coffee.find(params[:id])
     @favorite = current_user.favorites.find_by(coffee: @coffee)
+    @review = Review.new
   end
 
   def new
@@ -92,17 +93,6 @@ class CoffeesController < ApplicationController
       render :new
     end
   end
-
-  def create_review
-    @coffee = Coffee.find(params[:id])
-    @review = @coffee.reviews.new(review_params)
-    if @review.save
-      redirect_to @coffee_path, notice: 'Review was successfully created.'
-    else
-      render :show
-    end
-  end
-
 
   private
 
