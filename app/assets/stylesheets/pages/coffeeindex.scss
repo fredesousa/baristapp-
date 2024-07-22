@@ -6,13 +6,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour effet de profondeur */
   position: sticky;
   top: 152px; /* Position fixe à partir du haut de la page */
+  padding: 20px; /* Espacement interne */
 }
 
 .custom-search-input, .form-select, .form-control {
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
   padding: 8px 15px; /* Espacement interne */
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Espace inférieur */
 }
 
 .custom-search-btn {
@@ -23,6 +24,8 @@
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
   text-decoration: none;
   font-weight: bold;
+  margin: 10px 0; /* Espacement vertical uniquement */
+  padding: 10px; /* Espacement interne */
 }
 
 .card {
@@ -35,8 +38,8 @@
 .card-body {
   padding: 1.25rem; /* Espacement interne */
   background-color: rgba(255, 255, 255, 0.9); /* Fond légèrement opaque pour améliorer la lisibilité */
-
 }
+
 .card-img-top {
   border-top-left-radius: 0.5rem; /* Coins arrondis sur le haut de l'image */
   border-top-right-radius: 0.5rem;
@@ -59,10 +62,12 @@
   font-style: italic; /* Style de police en italique */
   text-align: center; /* Alignement du texte */
 }
+
 .color-gold {
   color: #d2b48c; /* Change la couleur du texte */
 }
 
-.carousel-control-prev, .carousel-control-next  {
+.carousel-control-prev, .carousel-control-next {
   opacity: 1;
- }
+}
+
