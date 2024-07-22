@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     post 'reviews', to: 'reviews#create', as: :create_review
   end
   resources :favorites, only: [:destroy]
+  get 'profil', to: 'pages#profil', as: 'profil'
 end

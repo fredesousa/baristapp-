@@ -1,0 +1,9 @@
+<h1>Vos cafés préferés</h1>
+
+<% @favorites.each do |favorite| %>
+  <ul>
+    <% favorite.coffee.photo.key.present? %>
+        <%= cl_image_tag favorite.coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+    <li><%= favorite.coffee.name %></li>
+  </ul>
+<% end %>

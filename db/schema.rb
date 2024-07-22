@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_071720) do
     t.bigint "coffee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "personnal_note"
     t.string "coffee_form", default: [], array: true
     t.integer "weekly_consumption", default: [], array: true
     t.string "coffee_type", default: [], array: true
