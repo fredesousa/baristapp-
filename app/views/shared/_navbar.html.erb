@@ -10,9 +10,10 @@
 
       <!-- Champ de recherche centré avec icône de favori à gauche et icône de recherche à droite -->
       <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
-        <a href="#" class="nav-link icon-container">
+        <%= link_to profil_path, class:"nav-link icon-container" do %>
+          <%= @favorites_count %>
           <i class="fa-regular fa-heart icon-40"></i>
-        </a>
+        <% end %>
         <div class="nav-item">
           <%= form_tag(method: "get", class: "d-flex justify-content-center align-items-center") do %>
             <input class="form-control search-input" type="search" placeholder="Rechercher" aria-label="Search" name="query">

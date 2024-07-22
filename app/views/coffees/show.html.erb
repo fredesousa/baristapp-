@@ -10,14 +10,14 @@
             <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
           <% end %>
           <div>
-            <% if current_user.favorites.include?(@coffee) %>
+            <% if @favorite %>
               <!-- Icône de cœur plein pour les cafés favoris -->
               <%= button_to favorite_path(@favorite), method: :delete do %>
                 <i class="fa-solid fa-heart position-in-card"></i>
               <% end %>
             <% else %>
               <!-- Icône de cœur vide pour les cafés non favoris -->
-              <%= button_to coffee_favorites_path(@coffee.id), method: :post do %>
+              <%= button_to coffee_favorites_path(@coffee), method: :post do %>
                 <i class="fa-regular fa-heart position-in-card"></i>
               <% end %>
             <% end %>
