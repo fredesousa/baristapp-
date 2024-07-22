@@ -4,9 +4,7 @@
   color: #6F4E37; /* Couleur du texte */
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
-  padding: 8px 15px; /* Espacement interne */
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
-  margin: 10px; /* Espacement autour des boutons */
   text-decoration: none;
 }
 .btn-custom:hover {
@@ -51,9 +49,11 @@
   z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
 }
 
+
 /* Conteneur pour le texte et les boutons */
 .content-wrapper {
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;

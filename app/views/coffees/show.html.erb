@@ -1,6 +1,4 @@
 <!-- app/views/coffees/show.html.erb -->
-
-<!-- app/views/coffees/show.html.erb -->
 <div class="container my-4">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -28,9 +26,11 @@
           <p class="card-text"><%= @coffee.description %></p>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Origine :</strong> <%= @coffee.origin %></li>
-            <li class="list-group-item"><strong> Origine précise :</strong> <%= @coffee.brewing_method %></li>
+            <li class="list-group-item"><strong> Méthode d'infusion :</strong> <%= @coffee.brewing_method %></li>
             <li class="list-group-item"><strong>Force :</strong> <%= @coffee.strength %></li>
             <li class="list-group-item"><strong>Type :</strong> <%= @coffee.coffee_type %></li>
+
+
 
             <!-- Ajoutez d'autres informations spécifiques au café -->
           </ul>
@@ -38,4 +38,26 @@
       </div>
     </div>
   </div>
+<h3>Add a Review</h3>
+
+<%= form_with(model: [ @coffee, @coffee.reviews.build ], url: coffee_path(@coffee), method: :post, local: true) do |form| %>
+  <div class="review-form">
+    <div class="rating">
+      <%= form.label :rating, "Rating:" %>
+      <div class="stars">
+        <% (1..5).each do |i| %>
+          <%= radio_button_tag 'review[rating]', i, false, id: "star#{i}" %>
+          <%= label_tag "star#{i}", '&#9733;', class: 'star' %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <%= form.label :content, "Review:" %>
+      <%= form.text_area :content, rows: 4 %>
+    </div>
+    <div>
+      <%= form.submit "Submit Review", class: "submit-button" %>
+    </div>
+  </div>
+<% end %>
 </div>

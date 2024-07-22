@@ -4,6 +4,8 @@
   border: 1px solid #ddd; /* Bordure légère */
   border-radius: 0.5rem; /* Coins arrondis */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour effet de profondeur */
+  position: sticky;
+  top: 152px; /* Position fixe à partir du haut de la page */
 }
 
 .custom-search-input, .form-select, .form-control {
@@ -18,9 +20,7 @@
   color: #6F4E37; /* Couleur du texte */
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
-  padding: 8px 15px; /* Espacement interne */
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
-  margin: 10px; /* Espacement autour des boutons */
   text-decoration: none;
   font-weight: bold;
 }
@@ -35,15 +35,11 @@
 .card-body {
   padding: 1.25rem; /* Espacement interne */
   background-color: rgba(255, 255, 255, 0.9); /* Fond légèrement opaque pour améliorer la lisibilité */
-}
 
+}
 .card-img-top {
   border-top-left-radius: 0.5rem; /* Coins arrondis sur le haut de l'image */
   border-top-right-radius: 0.5rem;
-}
-
-.carousel-control-prev, .carousel-control-next {
-  filter: invert(100%); /* Inverse les couleurs des boutons pour meilleure visibilité */
 }
 
 /* Cible les titres <h2> dans les cartes carrousel */
@@ -63,3 +59,10 @@
   font-style: italic; /* Style de police en italique */
   text-align: center; /* Alignement du texte */
 }
+.color-gold {
+  color: #d2b48c; /* Change la couleur du texte */
+}
+
+.carousel-control-prev, .carousel-control-next  {
+  opacity: 1;
+ }

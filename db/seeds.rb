@@ -48,7 +48,7 @@ puts "Created #{User.count} users"
     name: Faker::Coffee.blend_name,
     description: Faker::Coffee.notes,
     origin: Coffee::ORIGINS.sample,
-    brewing_method: Faker::Coffee.origin,
+    brewing_method: Coffee::BREWING_METHODS.sample,
     strength: rand(1..6),
     coffee_type: Coffee::COFFEES_TYPE.sample,
     machin_type: Coffee::MACHINS_TYPE.sample
