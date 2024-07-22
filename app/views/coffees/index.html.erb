@@ -40,43 +40,43 @@
     <!-- Colonne des résultats de café -->
     <div class="col-lg-9">
       <% if @filters_applied %>
-      <div class="card mb-4">
-        <div class="card-body card-carousel-header">
-          <h1 class="text-center mb-4">Résultats de la recherche - <%= @filter_name %></h1>
-          <div class="row">
-            <% @coffees.each do |coffee| %>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100 coffee-card">
-                  <% if coffee.photo.key.present? %>
-                    <div class="position-relative" style="height: 300px;">
-                      <%= link_to coffee_path(coffee) do %>
-                        <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
-                      <% end %>
-                      <div class="position-in-card">
-                        <% if coffee.favorites.exists?(user: current_user) %>
-                          <!-- Icône de cœur plein pour les cafés favoris -->
-                          <%= button_to favorite_path(coffee.favorites.find_by(user: current_user)), method: :delete, class: "btn-favorite" do %>
-                            <i class="fa-solid fa-heart position-in-card"></i>
-                          <% end %>
-                        <% else %>
-                          <!-- Icône de cœur vide pour les cafés non favoris -->
-                          <%= button_to coffee_favorites_path(coffee), method: :post, class: "btn-favorite" do %>
-                            <i class="fa-regular fa-heart position-in-card"></i>
-                          <% end %>
+        <div class="card mb-4">
+          <div class="card-body card-carousel-header">
+            <h1 class="text-center mb-4">Résultats de la recherche - <%= @filter_name %></h1>
+            <div class="row">
+              <% @coffees.each do |coffee| %>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 coffee-card">
+                    <% if coffee.photo.key.present? %>
+                      <div class="position-relative" style="height: 300px;">
+                        <%= link_to coffee_path(coffee) do %>
+                          <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
                         <% end %>
+                        <div>
+                          <% if coffee.favorites.exists?(user: current_user) %>
+                            <!-- Icône de cœur plein pour les cafés favoris -->
+                            <%= button_to favorite_path(coffee.favorites.find_by(user: current_user)), method: :delete, class: "btn-favorite" do %>
+                              <i class="fa-solid fa-heart position-in-card"></i>
+                            <% end %>
+                          <% else %>
+                            <!-- Icône de cœur vide pour les cafés non favoris -->
+                            <%= button_to coffee_favorites_path(coffee), method: :post, class: "btn-favorite" do %>
+                              <i class="fa-regular fa-heart position-in-card"></i>
+                            <% end %>
+                          <% end %>
+                        </div>
                       </div>
+                    <% end %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= coffee.name %></h5>
+                      <p class="card-text"><%= coffee.description %></p>
                     </div>
-                  <% end %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= coffee.name %></h5>
-                    <p class="card-text"><%= coffee.description %></p>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
       <% else %>
         <% if @coffees_by_origin.present? %>
           <% @coffees_by_origin.each do |origin, coffees| %>
