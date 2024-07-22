@@ -1,0 +1,60 @@
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Votre Profil</h1>
+          
+          <!-- Informations du profil -->
+          <div class="profile-info mb-4">
+            <h2>Informations personnelles</h2>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Nom :</strong> <%= current_user.user_name %></li>
+              <li class="list-group-item"><strong>Email :</strong> <%= current_user.email %></li>
+              <!-- Ajoutez d'autres informations personnelles ici -->
+            </ul>
+          </div>
+
+          <!-- Cafés préférés -->
+          <div class="favorites mb-4">
+            <h2>Vos cafés préférés</h2>
+            <div class="row">
+              <% @favorites.each do |favorite| %>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 coffee-card">
+                    <% if favorite.coffee.photo.key.present? %>
+                      <div class="position-relative" style="height: 300px;">
+                        <%= link_to coffee_path(favorite.coffee) do %>
+                          <%= cl_image_tag favorite.coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+                        <% end %>
+                        <div>
+                          <%= button_to favorite_path(favorite), method: :delete, class: "btn-favorite" do %>
+                            <i class="fa-solid fa-heart position-in-card"></i>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= favorite.coffee.name %></h5>
+                      <p class="card-text"><%= favorite.coffee.description %></p>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Origine :</strong> <%= favorite.coffee.origin %></li>
+                        <li class="list-group-item"><strong>Méthode d'infusion :</strong> <%= favorite.coffee.brewing_method %></li>
+                        <li class="list-group-item"><strong>Force :</strong> <%= favorite.coffee.strength %></li>
+                        <li class="list-group-item"><strong>Type :</strong> <%= favorite.coffee.coffee_type %></li>
+                        <!-- Ajoutez d'autres informations spécifiques au café -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <!-- Autres sections du profil -->
+          <!-- Ajoutez d'autres sections ici -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

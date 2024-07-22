@@ -1,9 +1,9 @@
-<div class="container-fluid d-flex align-items-center justify-content-center full-height authenticated-background">
+<div class="container-fluid d-flex align-items-center justify-content-center full-height <%= user_signed_in? ? 'authenticated-background' : 'home-page-unauthenticated' %>">
   <div class="row justify-content-center w-100">
     <div class="col-12">
       <% if user_signed_in? %>
         <div class="">
-          <p class="lead welcome">Bienvenue <%= current_user.user_name %>!</p>
+          <p class="lead welcome">Bienvenue <%= current_user.user_name %> !</p>
 
           <div class="card m-3">
             <div class="card-body custom-background">
@@ -71,19 +71,15 @@
       <% else %>
         <div class="home-page-unauthenticated">
           <!-- Contenu pour les utilisateurs non connectés -->
-          <div class="content-wrapper">
+          <div class="content-wrapper d-flex flex-column justify-content-between">
             <div class="unconnect">
-
               <h1>Bienvenue sur BARIST’APP</h1>
               <p class="lead">L’appli incontournable pour tous les amateurs de café. Trouvez des cafés adaptés à vos goûts avec notre recherche intuitive.</p>
-              <p class="lead">Notez, commentez, et consultez les avis pour découvrir les meilleurs cafés.</p>
-              <p class="lead">Prenez des notes personnelles sur vos découvertes sans les partager.</p>
               <p class="lead">Rejoignez notre communauté et transformez chaque dégustation en aventure !</p>
             </div>
-            <div class="button-wrapper">
-              <%= link_to 'S\'inscrire', new_user_registration_path, class: "mr-2 btn-custom" %>
+            <div class="button-wrapper ">
+              <%= link_to 'S\'inscrire', new_user_registration_path, class: "btn-custom" %>
               <%= link_to 'Se connecter', new_user_session_path, class: "btn-custom" %>
-
             </div>
           </div>
         </div>

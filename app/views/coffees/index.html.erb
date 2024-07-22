@@ -1,37 +1,35 @@
-<!-- app/views/coffees/index.html.erb -->
-
 <div class="container-fluid mt-4">
   <div class="row">
     <!-- Colonne des filtres -->
-    <div class="col-lg-3 mb-3" >
+    <div class="col-lg-3 mb-3">
       <div class="card filter-card">
         <div class="card-body">
-        <%= link_to "Voir tous les cafés", coffees_path, class: "btn btn-custom w-100 custom-search-btn center-submit mb-4" %>
+          <%= link_to "Voir tous les cafés", coffees_path, class: "btn btn-custom w-100 custom-search-btn mb-4" %>
           <!-- Barre de recherche -->
-          <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-            <%= text_field_tag :query, params[:query], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input mb-2" %>
-            <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn center-submit" %>
+          <%= form_tag coffees_path, method: :get do %>
+            <%= text_field_tag :query, params[:query], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input" %>
+            <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn" %>
           <% end %>
 
           <!-- Autres filtres -->
           <div class="mt-3">
-            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-              <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control custom-search-input mb-2" %>
-              <%= submit_tag "Filtrer par origine", class: "btn btn-custom w-100 custom-search-btn" %>
+            <%= form_tag coffees_path, method: :get do %>
+              <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control custom-search-input" %>
+              <%= submit_tag "Filtrer par origine", class: "btn btn-custom w-100 custom-search-btn mb-4" %>
             <% end %>
 
-            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-              <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control custom-search-input mb-2" %>
-              <%= submit_tag "Filtrer par force", class: "btn btn-custom w-100 custom-search-btn" %>
+            <%= form_tag coffees_path, method: :get do %>
+              <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control custom-search-input" %>
+              <%= submit_tag "Filtrer par force", class: "btn btn-custom w-100 custom-search-btn mb-4" %>
             <% end %>
 
-            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-              <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control custom-search-input mb-2" %>
-              <%= submit_tag "Filtrer par type de café", class: "btn btn-custom w-100 custom-search-btn" %>
+            <%= form_tag coffees_path, method: :get do %>
+              <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control custom-search-input" %>
+              <%= submit_tag "Filtrer par type de café", class: "btn btn-custom w-100 custom-search-btn mb-4" %>
             <% end %>
 
-            <%= form_tag coffees_path, method: :get, class: "mb-3" do %>
-              <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control custom-search-input mb-2" %>
+            <%= form_tag coffees_path, method: :get do %>
+              <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control custom-search-input" %>
               <%= submit_tag "Filtrer par type de machine", class: "btn btn-custom w-100 custom-search-btn" %>
             <% end %>
           </div>
@@ -42,28 +40,43 @@
     <!-- Colonne des résultats de café -->
     <div class="col-lg-9">
       <% if @filters_applied %>
-      <div class="card mb-4">
-        <div class="card-body card-carousel-header">
-          <h1 class="text-center mb-4">Résultats de la recherche - <%= @filter_name %></h1>
-          <div class="row">
-            <% @coffees.each do |coffee| %>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100 coffee-card">
-                  <% if coffee.photo.key.present? %>
-                    <%= link_to coffee_path(coffee) do %>
-                      <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+        <div class="card mb-4">
+          <div class="card-body card-carousel-header">
+            <h1 class="text-center mb-4">Résultats de la recherche - <%= @filter_name %></h1>
+            <div class="row">
+              <% @coffees.each do |coffee| %>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 coffee-card">
+                    <% if coffee.photo.key.present? %>
+                      <div class="position-relative" style="height: 300px;">
+                        <%= link_to coffee_path(coffee) do %>
+                          <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+                        <% end %>
+                        <div>
+                          <% if coffee.favorites.exists?(user: current_user) %>
+                            <!-- Icône de cœur plein pour les cafés favoris -->
+                            <%= button_to favorite_path(coffee.favorites.find_by(user: current_user)), method: :delete, class: "btn-favorite" do %>
+                              <i class="fa-solid fa-heart position-in-card"></i>
+                            <% end %>
+                          <% else %>
+                            <!-- Icône de cœur vide pour les cafés non favoris -->
+                            <%= button_to coffee_favorites_path(coffee), method: :post, class: "btn-favorite" do %>
+                              <i class="fa-regular fa-heart position-in-card"></i>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
                     <% end %>
-                  <% end %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= coffee.name %></h5>
-                    <p class="card-text"><%= coffee.description %></p>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= coffee.name %></h5>
+                      <p class="card-text"><%= coffee.description %></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
       <% else %>
         <% if @coffees_by_origin.present? %>
           <% @coffees_by_origin.each do |origin, coffees| %>
@@ -79,9 +92,24 @@
                             <div class="col-md-4 mb-3">
                               <div class="card h-100 coffee-card">
                                 <% if coffee.photo.key.present? %>
-                                  <%= link_to coffee_path(coffee) do %>
-                                    <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
-                                  <% end %>
+                                  <div class="position-relative" style="height: 300px;">
+                                    <%= link_to coffee_path(coffee) do %>
+                                      <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+                                    <% end %>
+                                    <div class="position-in-card">
+                                      <% if coffee.favorites.exists?(user: current_user) %>
+                                        <!-- Icône de cœur plein pour les cafés favoris -->
+                                        <%= button_to favorite_path(coffee.favorites.find_by(user: current_user)), method: :delete, class: "btn-favorite" do %>
+                                          <i class="fa-solid fa-heart"></i>
+                                        <% end %>
+                                      <% else %>
+                                        <!-- Icône de cœur vide pour les cafés non favoris -->
+                                        <%= button_to coffee_favorites_path(coffee), method: :post, class: "btn-favorite" do %>
+                                          <i class="fa-regular fa-heart"></i>
+                                        <% end %>
+                                      <% end %>
+                                    </div>
+                                  </div>
                                 <% end %>
                                 <div class="card-body">
                                   <h5 class="card-title"><%= coffee.name %></h5>

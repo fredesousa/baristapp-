@@ -10,24 +10,17 @@
 
       <!-- Champ de recherche centré avec icône de favori à gauche et icône de recherche à droite -->
       <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
-        <a href="#" class="nav-link icon-container">
+        <%= link_to profil_path, class: "nav-link icon-container" do %>
+          <%= @favorites_count %>
           <i class="fa-regular fa-heart icon-40"></i>
-        </a>
-        <div class="nav-item">
-          <%= form_tag(method: "get", class: "d-flex justify-content-center align-items-center") do %>
-            <input class="form-control search-input" type="search" placeholder="Rechercher" aria-label="Search" name="query">
-          <% end %>
-        </div>
-        <a href="#" class="nav-link icon-container">
-          <i class="fa-solid fa-magnifying-glass icon-40"></i>
-        </a>
+        <% end %> <!-- Fin du lien profil -->
       </div>
 
       <!-- Section droite avec les liens de navigation -->
       <div class="d-flex align-items-center">
         <div class="dropdown">
           <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu") %>
+            <%= image_tag("profil.png", class: "avatar", alt: "dropdown menu") %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>

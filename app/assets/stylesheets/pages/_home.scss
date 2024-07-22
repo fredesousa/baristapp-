@@ -1,12 +1,27 @@
+.unconnect p {
+  font-size: 20px; /* Taille de police pour les paragraphes */
+  background: linear-gradient(to bottom, #FFFFF0, #d2b48c); /* Dégradé de couleur */
+  -webkit-background-clip: text; /* Utilisé pour appliquer le dégradé au texte */
+  color: transparent; /* Couleur du texte transparent pour voir le dégradé */
+  text-shadow: 2px 2px 4px rgba(187, 187, 187, 0.3); /* Ombre pour améliorer la lisibilité */
+  font-weight: bold;
+  margin-bottom: 3rem; /* Espacement équivalent */
+  font-family: 'Roboto', sans-serif; /* Application de la police moderne */
+}
+
 /* Styles pour les boutons */
 .btn-custom {
   background-color: #ffffff; /* Couleur de fond */
   color: #6F4E37; /* Couleur du texte */
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
+  padding: 8px 15px; /* Espacement interne */
   transition: background-color 0.3s ease; /* Transition douce pour le survol */
+  margin: 10px; /* Espacement autour des boutons */
   text-decoration: none;
+  font-family: 'Roboto', sans-serif; /* Application de la police moderne */
 }
+
 .btn-custom:hover {
   background-color: #d2b48c; /* Couleur de fond au survol */
   color: #ffffff; /* Changement de couleur du texte au survol */
@@ -49,53 +64,7 @@
   z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
 }
 
-
-/* Conteneur pour le texte et les boutons */
-.content-wrapper {
-  display: flex;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* Styles pour le texte non connecté */
-.unconnect {
-  margin-bottom: 20px; /* Espace entre le texte et les boutons */
-}
-
-.unconnect h1 {
-  font-size: 35px; /* Taille de police pour le titre h1 */
-  background-image: linear-gradient(to right, #796853, #815b40); /* Gradient linéaire */
-  -webkit-background-clip: text; /* Utilisé avec color: transparent */
-  color: transparent; /* Couleur du texte transparent pour voir le gradient */
-  text-shadow: 3px 3px 6px rgba(167, 105, 35, 0.3); /* Ombre pour améliorer la lisibilité */
-  font-weight: bold;
-}
-
-.unconnect p {
-  font-size: 17px; /* Taille de police pour les paragraphes */
-  color: #d2b48c;
-  text-shadow: 2px 2px 4px rgba(187, 187, 187, 0.3); /* Ombre pour améliorer la lisibilité */
-  font-weight: bold;
-}
-
-.button-wrapper {
-  margin-top: 30px;
-}
-
-.welcome {
-  text-align: center;
-  color: #f3eae3;
-}
-
-.full-height {
-  height: 100vh;
-}
-
+/* Styles pour la page authentifiée */
 .authenticated-background {
   position: relative;
   min-height: 100vh;
@@ -128,6 +97,45 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.3); /* Filtre noir léger */
   z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
+}
+
+/* Conteneur pour le texte et les boutons */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+
+.unconnect h1 {
+  font-size: 40px; /* Taille de police pour le titre h1 */
+  background: linear-gradient(to right, #FFFFF0, #d2b48c); /* Gradient linéaire */
+  -webkit-background-clip: text; /* Utilisé avec color: transparent */
+  color: transparent; /* Couleur du texte transparent pour voir le gradient */
+  text-shadow: 3px 3px 6px rgba(167, 105, 35, 0.3); /* Ombre pour améliorer la lisibilité */
+  font-weight: bold;
+  margin-bottom: 3rem; /* Espacement équivalent */
+  font-family: 'Roboto', sans-serif; /* Application de la police moderne */
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+}
+
+.welcome {
+  text-align: center;
+  color: #f3eae3;
+}
+
+.full-height {
+  height: 100vh;
 }
 
 .custom-background {
@@ -183,4 +191,10 @@
 
 .tag-wrapper {
   margin-top: 1rem;
+}
+
+.welcome {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #F8F8F8;
 }

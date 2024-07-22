@@ -3,11 +3,22 @@
   <div class="row justify-content-center">
     <div>
       <div class="card text-center">
-        <div class="div-body-commentaire">
-          <div class="fiche-product">
-            <div class="card-img-top-wrapper position-relative" style="height: 400px; overflow: hidden;">
-              <% if @coffee.photo.key.present? %>
-                <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
+
+        <div class="card-img-top-wrapper position-relative" style="height: 400px; overflow: hidden;">
+          <% if @coffee.photo.key.present? %>
+            <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
+          <% end %>
+          <div>
+            <% if @favorite %>
+              <!-- Icône de cœur plein pour les cafés favoris -->
+              <%= button_to favorite_path(@favorite), method: :delete do %>
+                <i class="fa-solid fa-heart position-in-card"></i>
+              <% end %>
+            <% else %>
+              <!-- Icône de cœur vide pour les cafés non favoris -->
+              <%= button_to coffee_favorites_path(@coffee), method: :post do %>
+                <i class="fa-regular fa-heart position-in-card"></i>
+
               <% end %>
               <div>
                 <% if current_user.favorites.include?(@coffee) %>

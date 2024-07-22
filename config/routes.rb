@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
   resources :favorites, only: [:destroy]
-  resources :reviews, only: [:destroy]
+  get 'profil', to: 'pages#profil', as: 'profil'
+
 end

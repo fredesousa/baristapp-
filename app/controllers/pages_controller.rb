@@ -6,4 +6,8 @@ class PagesController < ApplicationController
     @show_navbar = user_signed_in?
     @show_footer = user_signed_in?
   end
+
+  def profil
+    @favorites = Favorite.all
+  end
 end
