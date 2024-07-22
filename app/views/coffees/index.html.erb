@@ -52,18 +52,18 @@
                         <%= link_to coffee_path(coffee) do %>
                           <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
                         <% end %>
-                        <div>
-                          <% if coffee.favorites.exists?(user: current_user) %>
+                          <div>
+                            <% if coffee.favorites.present? %>
                             <!-- Icône de cœur plein pour les cafés favoris -->
-                            <%= button_to favorite_path(coffee.favorites.find_by(user: current_user)), method: :delete, class: "btn-favorite" do %>
+                            <%= button_to favorite_path(coffee.favorites.ids), method: :delete, class:"btn-favorite"  do %>
                               <i class="fa-solid fa-heart position-in-card"></i>
                             <% end %>
-                          <% else %>
+                            <% else %>
                             <!-- Icône de cœur vide pour les cafés non favoris -->
-                            <%= button_to coffee_favorites_path(coffee), method: :post, class: "btn-favorite" do %>
+                            <%= button_to coffee_favorites_path(coffee), method: :post, class:"btn-favorite"  do %>
                               <i class="fa-regular fa-heart position-in-card"></i>
                             <% end %>
-                          <% end %>
+                            <% end %>
                         </div>
                       </div>
                     <% end %>
@@ -96,17 +96,17 @@
                                     <%= link_to coffee_path(coffee) do %>
                                       <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
                                     <% end %>
-                                    <div class="position-in-card">
-                                      <% if coffee.favorites.exists?(user: current_user) %>
-                                        <!-- Icône de cœur plein pour les cafés favoris -->
-                                        <%= button_to favorite_path(coffee.favorites.find_by(user: current_user)), method: :delete, class: "btn-favorite" do %>
-                                          <i class="fa-solid fa-heart"></i>
-                                        <% end %>
+                                    <div>
+                                      <% if coffee.favorites.present? %>
+                                      <!-- Icône de cœur plein pour les cafés favoris -->
+                                      <%= button_to favorite_path(coffee.favorites.ids), method: :delete, class:"btn-favorite" do %>
+                                        <i class="fa-solid fa-heart position-in-card"></i>
+                                      <% end %>
                                       <% else %>
-                                        <!-- Icône de cœur vide pour les cafés non favoris -->
-                                        <%= button_to coffee_favorites_path(coffee), method: :post, class: "btn-favorite" do %>
-                                          <i class="fa-regular fa-heart"></i>
-                                        <% end %>
+                                      <!-- Icône de cœur vide pour les cafés non favoris -->
+                                      <%= button_to coffee_favorites_path(coffee), method: :post, class:"btn-favorite"  do %>
+                                        <i class="fa-regular fa-heart position-in-card"></i>
+                                      <% end %>
                                       <% end %>
                                     </div>
                                   </div>

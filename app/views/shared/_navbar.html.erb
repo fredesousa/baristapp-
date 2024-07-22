@@ -10,10 +10,15 @@
 
       <!-- Champ de recherche centré avec icône de favori à gauche et icône de recherche à droite -->
       <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
-        <%= link_to profil_path, class: "nav-link icon-container" do %>
-          <%= @favorites_count %>
-          <i class="fa-regular fa-heart icon-40"></i>
-        <% end %> <!-- Fin du lien profil -->
+        <%= link_to profil_path, class: "nav-link position-relative" do %>
+          <i class="fas fa-heart"></i>
+          <% if current_user.favorites.count > 0 %>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorite-badge">
+              <%= current_user.favorites.count %>
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          <% end %>
+        <% end %>
       </div>
 
       <!-- Section droite avec les liens de navigation -->

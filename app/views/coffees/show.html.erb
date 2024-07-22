@@ -1,51 +1,80 @@
 <div class="container my-4">
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card text-center">
-        <div class="card-img-top-wrapper position-relative" style="height: 400px; overflow: hidden;">
-          <% if @coffee.photo.key.present? %>
-            <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
-          <% end %>
-          <div>
-            <% if current_user.favorites.exists?(coffee_id: @coffee.id) %>
-              <!-- Icône de cœur plein pour les cafés favoris -->
-              <%= button_to favorite_path(current_user.favorites.find_by(coffee_id: @coffee.id)), method: :delete do %>
-                <i class="fa-solid fa-heart position-in-card"></i>
-              <% end %>
-            <% else %>
-              <!-- Icône de cœur vide pour les cafés non favoris -->
-              <%= button_to coffee_favorites_path(@coffee), method: :post do %>
-                <i class="fa-regular fa-heart position-in-card"></i>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+    <div class="col-md-10">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><%= @coffee.name %></h5>
-          <p class="card-text"><%= @coffee.description %></p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Origine :</strong> <%= @coffee.origin %></li>
-            <li class="list-group-item"><strong>Méthode d'infusion :</strong> <%= @coffee.brewing_method %></li>
-            <li class="list-group-item"><strong>Force :</strong> <%= @coffee.strength %></li>
-            <li class="list-group-item"><strong>Type :</strong> <%= @coffee.coffee_type %></li>
-            <!-- Ajoutez d'autres informations spécifiques au café -->
-          </ul>
-        </div>
-      </div>
+          <h1 class="text-center mb-4">Détails du votre selection</h1>
+          
+          <div class="row">
+            <!-- Carte de base du café -->
+            <div class="col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="card-img-top-wrapper position-relative" style="height: 400px; overflow: hidden;">
+                    <% if @coffee.photo.key.present? %>
+                      <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
+                    <% end %>
+                    <div>
+                      <% if @favorite.present? %>
+                        <!-- Icône de cœur plein pour les cafés favoris -->
+                        <%= button_to favorite_path(@favorite), method: :delete, class: "btn-favorite" do %>
+                          <i class="fa-solid fa-heart position-in-card"></i>
+                        <% end %>
+                      <% else %>
+                        <!-- Icône de cœur vide pour les cafés non favoris -->
+                        <%= button_to coffee_favorites_path(@coffee.id), method: :post, class: "btn-favorite" do %>
+                          <i class="fa-regular fa-heart position-in-card"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= @coffee.name %></h5>
+                    <p class="card-text"><%= @coffee.description %></p>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><strong>Origine :</strong> <%= @coffee.origin %></li>
+                      <li class="list-group-item"><strong>Méthode d'infusion :</strong> <%= @coffee.brewing_method %></li>
+                      <li class="list-group-item"><strong>Force :</strong> <%= @coffee.strength %></li>
+                      <li class="list-group-item"><strong>Type :</strong> <%= @coffee.coffee_type %></li>
+                      <!-- Ajoutez d'autres informations spécifiques au café -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <div class="form-review mt-4">
-        <h1>Nouveau Commentaire</h1>
-        <%= simple_form_for [@coffee, @review] do |f| %>
-          <%= f.input :description, label: "Commentaire" %>
-          <%= f.input :rating, label: "Note", collection: 1..5, as: :radio_buttons %>
-          <%= f.submit "Ajouter Commentaire", class: "btn btn-primary" %>
-        <% end %>
-        <p><strong>Commentaires</strong></p>
-        <ul class="list-group">
-          <% @coffee.reviews.each do |review| %>
-            <li class="list-group-item"><%= review.description %></li>
-          <% end %>
-        </ul>
+            <!-- Carte des commentaires -->
+            <div class="col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h2>Nouveau Commentaire</h2>
+                  <%= simple_form_for [@coffee, @review] do |f| %>
+                    <%= f.input :description, label: "Commentaire" %>
+                    <div class="rating">
+                      <%= f.label :rating, "Note:" %>
+                      <div class="stars">
+                        <% (1..5).each do |i| %>
+                          <%= radio_button_tag 'review[rating]', i, false, id: "star#{i}", class: 'star-input' %>
+                          <label for="star<%= i %>" class="star">&#9733;</label>
+                        <% end %>
+                      </div>
+                    </div>
+                    <%= f.submit "Ajouter Commentaire", class: "btn-custom" %>
+                  <% end %>
+                  <h3 class="mt-4"><strong>Commentaires</strong></h3>
+                  <ul class="list-group">
+                    <% @coffee.reviews.each do |review| %>
+                      <li class="list-group-item">
+                        <p><%= review.description %></p>
+                        <p><strong>Note:</strong> <%= star_rating(review.rating) %></p>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> <!-- Fin de la rangée -->
+        </div>
       </div>
     </div>
   </div>
