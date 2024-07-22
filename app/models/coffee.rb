@@ -1,9 +1,17 @@
 # app/models/coffee.rb
 class Coffee < ApplicationRecord
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   # Associations
   has_many :preferences
   has_many :favorites
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_one_attached :photo
 
   MACHINS_TYPE = ['Espresso', 'Filtre', 'Chemex', 'Cafetière', 'Machine à grain'].freeze
