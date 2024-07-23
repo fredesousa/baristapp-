@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :coffees, through: :preferences
   has_many :coffees, through: :favorites
+  has_one_attached :photo, dependent: :destroy
 
   # Enum pour le niveau
   enum level: {

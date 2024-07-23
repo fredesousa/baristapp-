@@ -9,14 +9,23 @@ User.destroy_all
 Coffee.destroy_all
 
 users = [
-  { email: "fredesousa7@gmail.com", password: 'password', user_name: 'Fred', level: :debutant , habit: '4'},
-  { email: "amael.lathes@gmail.com", password: "password", user_name: 'Amael', level: :intermediaire , habit: '6' },
-  { email: "larrieu.aurelien@gmail.com", password: "password", user_name: 'Aurelien', level: :avance ,habit: '8' },
-  { email: "delvigjon@hotmail.fr", password: "password", user_name: 'Jonathan', level: :debutant , habit: '4' },
+  { email: "fredesousa7@gmail.com", password: 'password', user_name: 'Fred', level: :debutant , habit: '4', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729778/fred_pic_swnin5.jpg"},
+  { email: "amael.lathes@gmail.com", password: "password", user_name: 'Amael', level: :intermediaire , habit: '6', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729778/amael_pic_vba98h.jpg" },
+  { email: "delvigjon@hotmail.fr", password: "password", user_name: 'Jonathan', level: :debutant , habit: '4', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729779/Jon_pic_jxhv0v.jpg" },
 ]
 
-users.each do |user_params|
-  User.create!(user_params)
+users.each do |user|
+  photo_url = user[:photo_url]
+  user = User.new(
+    email: user[:email],
+    password: user[:password],
+    user_name: user[:user_name],
+    level: user[:level],
+    habit: user[:habit]
+  )
+  photo_file = URI.open(photo_url)
+  user.photo.attach(io: photo_file, filename: "#{user.user_name}.jpg", content_type: "image/jpg")
+  user.save!
 end
 
 puts "Created #{User.count} users"
