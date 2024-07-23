@@ -1,71 +1,5 @@
-.unconnect p {
-  font-size: 20px; /* Taille de police pour les paragraphes */
-  background: linear-gradient(to bottom, #FFFFF0, #d2b48c); /* Dégradé de couleur */
-  -webkit-background-clip: text; /* Utilisé pour appliquer le dégradé au texte */
-  color: transparent; /* Couleur du texte transparent pour voir le dégradé */
-  text-shadow: 2px 2px 4px rgba(187, 187, 187, 0.3); /* Ombre pour améliorer la lisibilité */
-  font-weight: bold;
-  margin-bottom: 3rem; /* Espacement équivalent */
-  font-family: 'Roboto', sans-serif; /* Application de la police moderne */
-}
-
-/* Styles pour les boutons */
-.btn-custom {
-  background-color: #ffffff; /* Couleur de fond */
-  color: #6F4E37; /* Couleur du texte */
-  border: 1px solid #d2b48c; /* Bordure */
-  border-radius: 5px; /* Arrondi des coins */
-  padding: 8px 15px; /* Espacement interne */
-  transition: background-color 0.3s ease; /* Transition douce pour le survol */
-  margin: 10px; /* Espacement autour des boutons */
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif; /* Application de la police moderne */
-}
-
-.btn-custom:hover {
-  background-color: #d2b48c; /* Couleur de fond au survol */
-  color: #ffffff; /* Changement de couleur du texte au survol */
-  border-color: #d2b48c; /* Changement de couleur de bordure au survol */
-}
-
-/* Styles pour la page d'accueil non authentifiée */
-.home-page-unauthenticated {
-  position: relative; /* Nécessaire pour le pseudo-élément ::before */
-  min-height: 100vh; /* Hauteur minimale égale à la hauteur de la fenêtre */
-  display: flex;
-  justify-content: center; /* Centre le contenu horizontalement */
-  align-items: center; /* Centre le contenu verticalement */
-  text-align: center; /* Centre le texte */
-}
-
-.home-page-unauthenticated::before {
-  content: '';
-  position: fixed; /* Utiliser 'fixed' au lieu de 'absolute' pour que l'image reste fixe lors du défilement */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('home.jpg'); /* Chemin vers ton image d'arrière-plan */
-  background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone */
-  background-position: center center; /* Centre l'image horizontalement et verticalement */
-  background-attachment: fixed; /* Fixe l'image d'arrière-plan lors du défilement */
-  opacity: 0.8; /* Réglage de l'opacité à 80% pour un filtre noir léger */
-  z-index: -2; /* Position en arrière-plan par rapport au contenu */
-}
-
-.home-page-unauthenticated::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Filtre noir léger */
-  z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
-}
-
-/* Styles pour la page authentifiée */
-.authenticated-background {
+/* Background settings for authenticated and unauthenticated pages */
+.authenticated-background, .home-page-unauthenticated {
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -74,32 +8,82 @@
   text-align: center;
 }
 
-.authenticated-background::before {
+.authenticated-background::before, .home-page-unauthenticated::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('form.jpg'); /* Chemin vers ton image d'arrière-plan */
   background-size: cover;
   background-position: center center;
-  opacity: 0.8; /* Réglage de l'opacité de l'image de fond */
-  z-index: -2; /* Position en arrière-plan par rapport au contenu */
+  opacity: 0.8;
+  z-index: -2;
 }
 
-.authenticated-background::after {
+.authenticated-background::before {
+  background-image: url('form.jpg'); /* Path to your background image for authenticated users */
+}
+
+.home-page-unauthenticated::before {
+  background-image: url('home.jpg'); /* Path to your background image for unauthenticated users */
+}
+
+.authenticated-background::after, .home-page-unauthenticated::after {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Filtre noir léger */
-  z-index: -1; /* Position au-dessus de l'image de fond mais derrière le texte */
+  background: rgba(0, 0, 0, 0.3); /* Light black filter */
+  z-index: -1;
 }
 
-/* Conteneur pour le texte et les boutons */
+/* Custom background for the form */
+.custom-background {
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  padding: 20px;
+  color: #a5836ac9;
+  font-weight: bold;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* Additional styles */
+.unconnect p {
+  font-size: 20px;
+  background: linear-gradient(to bottom, #FFFFF0, #d2b48c);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(187, 187, 187, 0.3);
+  font-weight: bold;
+  margin-bottom: 3rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-custom {
+  background-color: #ffffff;
+  color: #6F4E37;
+  border: 1px solid #d2b48c;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-custom:hover {
+  background-color: #d2b48c;
+  color: #ffffff;
+  border-color: #d2b48c;
+}
+
+.full-height {
+  height: 100vh;
+}
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -109,17 +93,15 @@
   border-radius: 10px;
 }
 
-
-
 .unconnect h1 {
-  font-size: 40px; /* Taille de police pour le titre h1 */
-  background: linear-gradient(to right, #FFFFF0, #d2b48c); /* Gradient linéaire */
-  -webkit-background-clip: text; /* Utilisé avec color: transparent */
-  color: transparent; /* Couleur du texte transparent pour voir le gradient */
-  text-shadow: 3px 3px 6px rgba(167, 105, 35, 0.3); /* Ombre pour améliorer la lisibilité */
+  font-size: 40px;
+  background: linear-gradient(to right, #FFFFF0, #d2b48c);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 3px 3px 6px rgba(167, 105, 35, 0.3);
   font-weight: bold;
-  margin-bottom: 3rem; /* Espacement équivalent */
-  font-family: 'Roboto', sans-serif; /* Application de la police moderne */
+  margin-bottom: 3rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 .button-wrapper {
@@ -132,30 +114,17 @@
 .welcome {
   text-align: center;
   color: #f3eae3;
-}
-
-.full-height {
-  height: 100vh;
-}
-
-.custom-background {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond légèrement transparente */
-  padding: 20px;
-  color: #a5836ac9;
+  font-size: 2rem;
   font-weight: bold;
-  border-radius: 10px;
-  z-index: 1; /* Assurez-vous que le contenu est au-dessus de l'image de fond */
 }
 
-/* Styles pour les cartes cliquables */
 .tag-item {
   display: inline-block;
   margin: 10px;
 }
 
 .tag-item input[type="radio"] {
-  display: none; /* Cacher les boutons radio */
+  display: none;
 }
 
 .tag-item label {
@@ -182,19 +151,4 @@
   color: #ffffff;
   border-color: #d2b48c;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.form-group {
-  text-align: center;
-  margin: 1rem;
-}
-
-.tag-wrapper {
-  margin-top: 1rem;
-}
-
-.welcome {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #F8F8F8;
 }
