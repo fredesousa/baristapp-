@@ -31,11 +31,23 @@
                   <div class="card-body">
                     <h5 class="card-title"><%= @coffee.name %></h5>
                     <p class="card-text"><%= @coffee.description %></p>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong>Origine :</strong> <%= @coffee.origin %></li>
-                      <li class="list-group-item"><strong>Méthode d'infusion :</strong> <%= @coffee.brewing_method %></li>
-                      <li class="list-group-item"><strong>Force :</strong> <%= @coffee.strength %></li>
-                      <li class="list-group-item"><strong>Type :</strong> <%= @coffee.coffee_type %></li>
+                     <ul class="list-group list-group-flush">
+                      <li class="list-group-item d-flex justify-content-center align-items-center">
+                        <%= image_tag 'mondial.png', alt: 'Origine', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                        <%= @coffee.origin %>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-center align-items-center">
+                        <%= image_tag 'livre.png', alt: 'Méthode d\'infusion', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                        <%= @coffee.brewing_method %>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-center align-items-center">
+                        <%= image_tag 'grain-de-cafe.png', alt: 'Grains de café', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                        <%= @coffee.strength %>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-center align-items-center">
+                        <%= image_tag 'sac-a-cafe.png', alt: 'Type de café', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                        <%= @coffee.coffee_type %>
+                      </li>
                       <!-- Ajoutez d'autres informations spécifiques au café -->
                     </ul>
                   </div>
