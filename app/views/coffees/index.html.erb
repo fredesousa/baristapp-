@@ -83,7 +83,7 @@
             <div class="card mb-4">
               <div class="card-body card-carousel-header">
                 <h2 class="text-center mb-4">Cafés de <%= origin %></h2>
-                <div id="carouselExampleCaptions_<%= origin %>" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleCaptions_<%= origin.parameterize %>" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
                     <% coffees.each_slice(3).with_index do |slice, index| %>
                       <div class="carousel-item <%= 'active' if index.zero? %>">
@@ -98,15 +98,15 @@
                                     <% end %>
                                     <div>
                                       <% if coffee.favorites.present? %>
-                                      <!-- Icône de cœur plein pour les cafés favoris -->
-                                      <%= button_to favorite_path(coffee.favorites.ids), method: :delete, class:"btn-favorite" do %>
-                                        <i class="fa-solid fa-heart position-in-card"></i>
-                                      <% end %>
+                                        <!-- Icône de cœur plein pour les cafés favoris -->
+                                        <%= button_to favorite_path(coffee.favorites.ids), method: :delete, class:"btn-favorite" do %>
+                                          <i class="fa-solid fa-heart position-in-card"></i>
+                                        <% end %>
                                       <% else %>
-                                      <!-- Icône de cœur vide pour les cafés non favoris -->
-                                      <%= button_to coffee_favorites_path(coffee), method: :post, class:"btn-favorite"  do %>
-                                        <i class="fa-regular fa-heart position-in-card"></i>
-                                      <% end %>
+                                        <!-- Icône de cœur vide pour les cafés non favoris -->
+                                        <%= button_to coffee_favorites_path(coffee), method: :post, class:"btn-favorite"  do %>
+                                          <i class="fa-regular fa-heart position-in-card"></i>
+                                        <% end %>
                                       <% end %>
                                     </div>
                                   </div>
@@ -122,11 +122,11 @@
                       </div>
                     <% end %>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions_<%= origin %>" data-bs-slide="prev">
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions_<%= origin.parameterize %>" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Précédent</span>
                   </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions_<%= origin %>" data-bs-slide="next">
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions_<%= origin.parameterize %>" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Suivant</span>
                   </button>

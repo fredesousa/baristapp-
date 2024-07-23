@@ -32,8 +32,6 @@ class CoffeesController < ApplicationController
     if params[:query].present?
       @coffees = Coffee.search_by_name(params[:query])
       @filters_applied = true
-    else
-      @coffees = Coffee.all
     end
 
     # Filtrage par recherche de nom
