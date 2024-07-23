@@ -3,7 +3,7 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <h1 class="text-center mb-4">Détails du votre selection</h1>
+          <h1 class="text-center mb-4">Détails de votre sélection</h1>
 
           <div class="row">
             <!-- Carte de base du café -->
@@ -31,7 +31,7 @@
                   <div class="card-body">
                     <h5 class="card-title"><%= @coffee.name %></h5>
                     <p class="card-text"><%= @coffee.description %></p>
-                     <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush">
                       <li class="list-group-item d-flex justify-content-center align-items-center">
                         <%= image_tag 'mondial.png', alt: 'Origine', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
                         <%= @coffee.origin %>
@@ -76,7 +76,23 @@
                   <h3 class="mt-4"><strong>Commentaires</strong></h3>
                   <ul class="list-group">
                     <% @coffee.reviews.each do |review| %>
-                      <li class="list-group-item"> <p><%= review.description %></p> <p><strong>Note:</strong> <%= star_rating(review.rating) %></p> <!-- Système de likes --> <div> <% if review.liked_by?(current_user) %> <%= button_to coffee_review_like_path(@coffee, review, review.likes.find_by(user: current_user)), method: :delete, class: 'btn btn-danger' do %> <i class="fa-regular fa-thumbs-down"></i> <% end %> <% else %> <%= button_to coffee_review_likes_path(@coffee, review), method: :post, class: 'btn btn-primary' do %> <i class="fa-regular fa-thumbs-up"></i> <% end %> <% end %> <span><%= review.likes.count %> Likes</span> </div> </li>
+                      <li class="list-group-item">
+                        <p><%= review.description %></p>
+                        <p><strong>Note:</strong> <%= star_rating(review.rating) %></p>
+                        <!-- Système de likes -->
+                        <div class="like-container">
+                          <% if review.likes.exists?(user: current_user) %>
+                            <%= button_to coffee_review_like_path(@coffee, review, review.likes.find_by(user: current_user)), method: :delete, class: 'btn-like unlike' do %>
+                              <i class="fa-regular fa-thumbs-down"></i>
+                            <% end %>
+                          <% else %>
+                            <%= button_to coffee_review_likes_path(@coffee, review), method: :post, class: 'btn-like like' do %>
+                              <i class="fa-regular fa-thumbs-up"></i>
+                            <% end %>
+                          <% end %>
+                          <span class="like-count"><%= review.likes.count %> Likes</span>
+                        </div>
+                      </li>
                     <% end %>
                   </ul>
                 </div>
