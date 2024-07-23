@@ -45,6 +45,10 @@
   border-top-left-radius: 0.5rem; /* Coins arrondis sur le haut de l'image */
   border-top-right-radius: 0.5rem;
 }
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: #d2b48c; /* Couleur de fond */
+  border-radius: 50%;
+}
 
 /* Cible les titres <h2> dans les cartes carrousel */
 .card-carousel-header h2 {
