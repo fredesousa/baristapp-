@@ -18,6 +18,7 @@ class Coffee < ApplicationRecord
   COFFEES_TYPE = ['Arabica', 'Robusta'].freeze
   ORIGINS = ['Costa Rica', 'Bresil', 'Madacascar', 'Ethiopie', 'Mexique', 'Perou', 'Guatemala'].freeze
   BREWING_METHODS = ['Aeropress', 'V60', 'Cold Brew', 'Moka Pot', 'Pour Over'].freeze
+  
   # Validations
   validates :name, presence: true
   validates :origin, inclusion: { in: ORIGINS }
@@ -25,6 +26,7 @@ class Coffee < ApplicationRecord
   validates :strength, presence: true
   validates :coffee_type, inclusion: { in: COFFEES_TYPE }
   validates :machin_type, inclusion: { in: MACHINS_TYPE }
-  validates :strength, inclusion: { in: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }
+  validates :strength, inclusion: { in: (1..10).to_a.map(&:to_s) }
+  validates :price, presence: true, numericality: { greater_than: 0 }
 
 end
