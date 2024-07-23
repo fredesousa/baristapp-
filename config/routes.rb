@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :coffees, only: [:index, :show, :new, :create, :edit, :update] do
     resources :favorites, only: [:create]
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
   resources :favorites, only: [:destroy]
   get 'profil', to: 'pages#profil', as: 'profil'
-
 end

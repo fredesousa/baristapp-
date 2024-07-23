@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # Associations
   has_many :preferences
   has_many :favorites
+  has_many :likes, dependent: :destroy
   has_many :coffees, through: :preferences
   has_many :coffees, through: :favorites
 

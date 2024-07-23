@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_22_071720) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_23_081136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,8 +52,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_071720) do
     t.string "machin_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "roaster"
-    t.decimal "price"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -63,6 +61,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_071720) do
     t.datetime "updated_at", null: false
     t.index ["coffee_id"], name: "index_favorites_on_coffee_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -106,6 +113,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_071720) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "coffees"
   add_foreign_key "favorites", "users"
+  add_foreign_key "likes", "reviews"
+  add_foreign_key "likes", "users"
   add_foreign_key "preferences", "coffees"
   add_foreign_key "preferences", "users"
   add_foreign_key "reviews", "coffees"
