@@ -1,5 +1,7 @@
+require 'net/http'
 require "open-uri"
 require 'faker'
+require "json"
 
 Preference.destroy_all
 Favorite.destroy_all
@@ -44,19 +46,41 @@ puts "Created #{User.count} users"
   #coffee.save!
 #end
 
-50.times do
-  coffee = Coffee.create!(
+# 50.times do
+  # coffee = Coffee.create!(
+    # name: Faker::Coffee.blend_name,
+    # description: Faker::Coffee.notes,
+    # origin: Coffee::ORIGINS.sample,
+    # brewing_method: Coffee::BREWING_METHODS.sample,
+    # strength: rand(1..6),
+    # coffee_type: Coffee::COFFEES_TYPE.sample,
+    # machin_type: Coffee::MACHINS_TYPE.sample
+  # )
+
+  # photo_url = 'https://res.cloudinary.com/du3ec0enc/image/upload/v1721133046/Sao-Joao-Bresil-Cafes-du-Monde-_fir6oc.png'
+  # photo_file = URI.open(photo_url)
+  # coffee.photo.attach(io: photo_file, filename: "#{coffee.name}.png", content_type: "image/png")
+  # coffee.save!
+# end
+
+puts "Start coffee seed"
+
+uri = URI('https://fake-coffee-api.vercel.app/api')
+response = Net::HTTP.get(uri)
+data = JSON.parse(response)
+
+data.each do |coffee_instance|
+  image_url = coffee_instance['image_url']
+  coffee_instance = Coffee.create!(
     name: Faker::Coffee.blend_name,
     description: Faker::Coffee.notes,
     origin: Coffee::ORIGINS.sample,
     brewing_method: Coffee::BREWING_METHODS.sample,
-    strength: rand(1..6),
+    strength: rand(1..10),
     coffee_type: Coffee::COFFEES_TYPE.sample,
     machin_type: Coffee::MACHINS_TYPE.sample
   )
-
-  photo_url = 'https://res.cloudinary.com/du3ec0enc/image/upload/v1721133046/Sao-Joao-Bresil-Cafes-du-Monde-_fir6oc.png'
-  photo_file = URI.open(photo_url)
-  coffee.photo.attach(io: photo_file, filename: "#{coffee.name}.png", content_type: "image/png")
-  coffee.save!
+  photo_file = URI.open(image_url)
+  coffee_instance.photo.attach(io: photo_file, filename: "#{coffee_instance.name}.png", content_type: "image/png")
+  coffee_instance.save!
 end

@@ -6,18 +6,23 @@
   <title>Baristapp</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  
+
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_importmap_tags %>
 </head>
 <body class="d-flex flex-column min-vh-100">
-  <%= render 'shared/navbar' %>
+
+  <% unless current_page?('/') %>
+    <%= render 'shared/navbar' %>
+  <% end %>
 
   <main class="flex-grow-1">
     <%= render "shared/flashes" %>
     <%= yield %>
   </main>
 
-  <%= render 'shared/footer' %>
+  <% unless current_page?('/') %>
+    <%= render 'shared/footer' %>
+  <% end %>
 </body>
 </html>
