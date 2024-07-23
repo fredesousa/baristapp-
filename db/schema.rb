@@ -52,6 +52,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_081136) do
     t.string "machin_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "roaster"
+    t.decimal "price"
   end
 
   create_table "favorites", force: :cascade do |t|
