@@ -3,11 +3,7 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-
-          
           <h1 class="text-center mb-4">Détails de votre sélection</h1>
-
-
           <div class="row">
             <!-- Carte de base du café -->
             <div class="col-md-6 mb-4">
@@ -33,7 +29,7 @@
                   </div>
                   <div class="card-body">
                     <h5 class="card-title"><%= @coffee.name %></h5>
-                    <p class="card-text"><%= @coffee.description %></p>
+                    <p class="card-text show"><%= @coffee.description %></p>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item d-flex justify-content-center align-items-center">
                         <%= image_tag 'mondial.png', alt: 'Origine', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
@@ -53,6 +49,10 @@
                       </li>
                       <!-- Ajoutez d'autres informations spécifiques au café -->
                     </ul>
+                    <!-- Lien vers la marketplace -->
+                    <div class="mt-3">
+                      <%= link_to "Acheter sur la Marketplace", marketplace_path(@coffee), class: "btn-custom" %>
+                    </div>
                   </div>
                 </div>
               </div>

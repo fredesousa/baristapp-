@@ -1,0 +1,68 @@
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Acheter <%= @coffee.name %></h1>
+          <div class="row">
+            <!-- Image du café -->
+            <div class="col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <% if @coffee.photo.key.present? %>
+                    <%= cl_image_tag @coffee.photo.key, class: "card-img-top", style: "width: 100%; height: 100%; object-fit: cover;" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <!-- Détails du café et processus d'achat -->
+            <div class="col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h2 class="card-title"><%= @coffee.name %></h2>
+                  <p class="card-text"><%= @coffee.description %></p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-start align-items-center">
+                      <%= image_tag 'mondial.png', alt: 'Origine', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                      <%= @coffee.origin %>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-start align-items-center">
+                      <%= image_tag 'livre.png', alt: 'Méthode d\'infusion', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                      <%= @coffee.brewing_method %>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-start align-items-center">
+                      <%= image_tag 'grain-de-cafe.png', alt: 'Grains de café', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                      <%= @coffee.strength %>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-start align-items-center">
+                      <%= image_tag 'sac-a-cafe.png', alt: 'Type de café', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                      <%= @coffee.coffee_type %>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-start align-items-center">
+                      <%= image_tag 'euro.png', alt: 'Prix', class: 'icon-margin-right', style: 'vertical-align:middle; width:24px; height:24px;' %>
+                      <%= number_to_currency(@coffee.price, unit: "", format: "%n€") %>
+                    </li>
+                  </ul>
+                  <!-- Formulaire d'achat simulé -->
+                  <div class="mt-4">
+                    <%= form_with(url: '#', method: :post, local: true) do %>
+                      <div class="form-group">
+                        <label for="quantity">Quantité:</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1">
+                      </div>
+                      <button type="submit" class="btn-custom ">Acheter Maintenant</button>
+                    <% end %>
+                  </div>
+                  <div class="mt-4">
+                    <%= link_to 'Retour', coffee_path(@coffee), class: 'btn btn-secondary' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- Fin de la rangée -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

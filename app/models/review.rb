@@ -1,7 +1,7 @@
-# app/models/review.rb
 class Review < ApplicationRecord
   # Associations
   belongs_to :coffee
+  belongs_to :user
   has_many :likes, dependent: :destroy
 
   # Validations
