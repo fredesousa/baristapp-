@@ -80,6 +80,42 @@
   border-color: #d2b48c;
 }
 
+.btn-custom-cancel {
+  background-color: #ffffff;
+  color: #6F4E37;
+  border: 1px solid #ff1a1a;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.btn-custom-cancel:hover {
+  background-color: #e60000;
+  border-color: #b30000;
+}
+
+.btn-custom-back {
+  border: 1px solid #5a6268;
+  background-color: #ffffff;
+  color: #6F4E37;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.btn-custom-back:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
 .full-height {
   height: 100vh;
 }
@@ -151,4 +187,13 @@
   color: #ffffff;
   border-color: #d2b48c;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-icon-link {
+  color: #6F4E37;
+  text-decoration: none;
+}
+
+.custom-icon-link:hover {
+  color: #5a3e2d; /* Slightly darker shade for hover effect */
 }
