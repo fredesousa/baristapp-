@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem 'faker'
 gem 'pg_search'
+gem 'rails-i18n'
 
 group :development, :test do
   gem "dotenv-rails"

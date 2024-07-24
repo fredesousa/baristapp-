@@ -14,6 +14,7 @@ module Baristapp
       generate.helper false
       generate.test_framework :test_unit, fixture: false
     end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
@@ -29,5 +30,9 @@ module Baristapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Ajout des configurations I18n pour la langue par défaut et les langues disponibles
+    config.i18n.default_locale = :fr
+    config.i18n.available_locales = [:fr, :en]
   end
 end
