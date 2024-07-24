@@ -9,9 +9,24 @@
           <div class="profile-info mb-4">
             <h2>Informations personnelles</h2>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>Nom :</strong> <%= current_user.user_name %></li>
-              <li class="list-group-item"><strong>Email :</strong> <%= current_user.email %></li>
-              <li class="list-group-item"><strong>Niveau :</strong> <%= current_user.level ? current_user.level.humanize : 'Niveau non défini' %></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>Nom :</strong> <%= current_user.user_name %>
+                <%= link_to edit_user_registration_path, class: 'btn btn-link p-0 ml-2 custom-icon-link' do %>
+                  <i class="fa fa-pencil-alt"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>Email :</strong> <%= current_user.email %>
+                <%= link_to edit_user_registration_path, class: 'btn btn-link p-0 ml-2 custom-icon-link' do %>
+                  <i class="fa fa-pencil-alt"></i>
+                <% end %>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>Niveau :</strong> <%= current_user.level ? current_user.level.humanize : 'Niveau non défini' %>
+                <%= link_to edit_user_registration_path, class: 'btn btn-link p-0 ml-2 custom-icon-link' do %>
+                  <i class="fa fa-pencil-alt"></i>
+                <% end %>
+              </li>
               <!-- Ajoutez d'autres informations personnelles ici -->
             </ul>
           </div>
