@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
     @review.user = current_user # Assigner l'utilisateur actuel à la revue
     # Inverser la valeur de la note
     @review.rating = 6 - @review.rating if @review.rating.present?
-    
     if @review.save
       redirect_to coffee_path(@coffee), notice: 'Commentaire ajouté avec succès.'
     else

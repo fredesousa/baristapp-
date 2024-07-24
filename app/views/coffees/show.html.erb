@@ -54,6 +54,7 @@
                       <%= link_to "Acheter sur la Marketplace", marketplace_path(@coffee), class: "btn-custom" %>
                     </div>
                   </div>
+            <%= button_to "Ajouter au panier", add_to_cart_coffee_path(@coffee), method: :post, class: "btn btn-primary" %>
                 </div>
               </div>
             </div>
@@ -89,7 +90,7 @@
                               <i class="fa-regular fa-thumbs-down"></i>
                             <% end %>
                           <% else %>
-                            <%= button_to coffee_review_likes_path(@coffee, review), method: :post, class: 'btn-like like' do %>
+                            <%= button_to coffee_reviews_path(@coffee, review), method: :post, class: 'btn-like like' do %>
                               <i class="fa-regular fa-thumbs-up"></i>
                             <% end %>
                           <% end %>
