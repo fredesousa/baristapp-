@@ -71,7 +71,14 @@ class CoffeesController < ApplicationController
         @coffees_by_origin[origin] = coffees.select { |coffee| coffee.machin_type == params[:machin_type] }
       end
     end
+    # Tri par les mieux notés
+    if params[:sort_by] == "rating"
+      @coffees = @coffees.joins(:reviews).group('coffee.id').order('AVG(reviews.rating) DESC')
+      @filters_applied = true
+    end
   end
+
+
 
   def show
     @coffee = Coffee.find(params[:id])
