@@ -11,12 +11,13 @@ Rails.application.routes.draw do
     member do
       post 'add_to_cart', to: 'carts#add'
     end
-    resources :likes, only: [:create, :destroy]
     resources :favorites, only: [:create]
     resources :reviews, only: [:create] do
     end
   end
-
+  resources :reviews, only: [] do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :favorites, only: [:destroy]
   resource :cart, only: [:show] do
     post 'checkout', on: :collection

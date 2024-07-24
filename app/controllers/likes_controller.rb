@@ -12,7 +12,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @review.likes.where(user: current_user).destroy_all
+    Like.find(params[:id]).destroy
     redirect_to coffee_path(@review.coffee)
   end
 
