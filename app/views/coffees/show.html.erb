@@ -50,7 +50,7 @@
                       <!-- Ajoutez d'autres informations spécifiques au café -->
                     </ul>
                     <!-- Lien vers la marketplace -->
-                  
+
                   </div class="mt-3">
                       <%= button_to "Ajouter au panier", add_to_cart_coffee_path(@coffee), method: :post, class: "btn-custom" %>
                 </div>
@@ -83,12 +83,12 @@
                         <p><strong>Note:</strong> <%= star_rating(review.rating) %></p>
                         <!-- Système de likes -->
                         <div class="like-container">
-                          <% if review.likes.exists?(user: current_user) %>
-                            <%= button_to coffee_review_like_path(@coffee, review, review.likes.find_by(user: current_user)), method: :delete, class: 'btn-like unlike' do %>
+                          <% if current_user.likes.find_by(review: review) %>
+                            <%= button_to review_like_path(review, current_user.likes.find_by(review: review)), method: :delete, class: 'btn-like unlike' do %>
                               <i class="fa-regular fa-thumbs-down"></i>
                             <% end %>
                           <% else %>
-                            <%= button_to coffee_reviews_path(@coffee, review), method: :post, class: 'btn-like like' do %>
+                            <%= button_to review_likes_path(review), method: :post, class: 'btn-like like' do %>
                               <i class="fa-regular fa-thumbs-up"></i>
                             <% end %>
                           <% end %>

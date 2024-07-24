@@ -14,8 +14,8 @@ Coffee.destroy_all
 
 users = [
   { email: "fredesousa7@gmail.com", password: 'password', user_name: 'Fred', level: :debutant , habit: '4', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729778/fred_pic_swnin5.jpg"},
-  { email: "amael.lathes@gmail.com", password: "password", user_name: 'Amael', level: :intermediaire , habit: '6', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729778/amael_pic_vba98h.jpg" },
-  { email: "delvigjon@hotmail.fr", password: "password", user_name: 'Jonathan', level: :debutant , habit: '4', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729779/Jon_pic_jxhv0v.jpg" },
+  { email: "amael.lathes@gmail.com", password: "password", user_name: 'Amael', level: :avance , habit: '6', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729778/amael_pic_vba98h.jpg" },
+  { email: "delvigjon@hotmail.fr", password: "password", user_name: 'Jonathan', level: :intermediaire , habit: '4', photo_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1721729779/Jon_pic_jxhv0v.jpg" },
 ]
 
 users.each do |user|
