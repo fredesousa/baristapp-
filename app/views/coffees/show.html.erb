@@ -50,11 +50,9 @@
                       <!-- Ajoutez d'autres informations spécifiques au café -->
                     </ul>
                     <!-- Lien vers la marketplace -->
-                    <div class="mt-3">
-                      <%= link_to "Acheter sur la Marketplace", marketplace_path(@coffee), class: "btn-custom" %>
-                    </div>
-                  </div>
-            <%= button_to "Ajouter au panier", add_to_cart_coffee_path(@coffee), method: :post, class: "btn btn-primary" %>
+                  
+                  </div class="mt-3">
+                      <%= button_to "Ajouter au panier", add_to_cart_coffee_path(@coffee), method: :post, class: "btn-custom" %>
                 </div>
               </div>
             </div>
