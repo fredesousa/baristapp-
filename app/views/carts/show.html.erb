@@ -1,0 +1,26 @@
+<h1>Votre Panier</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Café</th>
+      <th>Quantité</th>
+      <th>Prix</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.cart_items.each do |item| %>
+      <tr>
+        <td><%= item.coffee.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.coffee.price) %></td>
+        <td><%= number_to_currency(item.quantity * item.coffee.price) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Total: <%= number_to_currency(@cart.total_price) %></h3>
+
+<%= button_to "Checkout", checkout_cart_path, method: :post %>
