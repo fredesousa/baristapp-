@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:destroy]
   get 'profil', to: 'pages#profil', as: 'profil'
+  get 'about', to: 'pages#about', as: 'about'
 end

@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
     @favorites_count = Favorite.count
   end
 
+  def about
+  end
+
     private
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:level, :habit, :user_name, :photo])
