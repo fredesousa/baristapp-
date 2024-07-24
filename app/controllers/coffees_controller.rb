@@ -72,8 +72,8 @@ class CoffeesController < ApplicationController
       end
     end
     # Tri par les mieux notés
-    if params[:sort_by] == "rating"
-      @coffees = @coffees.joins(:reviews).group('coffee.id').order('AVG(reviews.rating) DESC')
+    if params[:sort] == "top_rated"
+      @coffees = @coffees.joins(:reviews).group('coffees.id').order('AVG(reviews.rating) DESC')
       @filters_applied = true
     end
   end
