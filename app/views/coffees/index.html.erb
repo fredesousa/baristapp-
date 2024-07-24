@@ -10,6 +10,8 @@
             <%= text_field_tag :query, params[:query], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input" %>
             <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn" %>
           <% end %>
+          <!-- filtre des plus populaires -->
+            <%= link_to "Trier par les mieux notés", coffees_path(sort: 'top_rated'), class: "btn btn-custom w-100 custom-search-btn mt-3" %>
 
           <!-- Autres filtres -->
           <div class="mt-3">
