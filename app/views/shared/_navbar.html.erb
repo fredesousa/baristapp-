@@ -22,8 +22,21 @@
       </div>
 
       <!-- Section droite avec les liens de navigation -->
-      <div class="d-flex align-items-center" style="width: 82px">
-        <div class="dropdown">
+      <div class="d-flex align-items-center">
+        <!-- Icone de panier -->
+        <div class="nav-item">
+          <%= link_to cart_path, class: "nav-link position-relative" do %>
+            <i class="fa fa-shopping-cart"></i>
+            <% if current_user.cart.cart_items.count > 0 %>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
+                <%= current_user.cart.cart_items.count %>
+                <span class="visually-hidden">articles dans le panier</span>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="dropdown ms-3">
           <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag(current_user.photo, style: "width: 65px; border-radius: 50%") %>
           </a>
