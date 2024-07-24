@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :coffees, through: :favorites
   has_one_attached :photo, dependent: :destroy
   has_one :cart, dependent: :destroy
-
+  after_create :initialize_cart
   # Enum pour le niveau
   enum level: {
     debutant: 'Débutant',
@@ -26,5 +26,11 @@ class User < ApplicationRecord
   validates :level, presence: true, inclusion: { in: levels.keys }
   validates :habit, presence: true
   validates :user_name, presence: true, uniqueness: true
+
+  private
+
+  def initialize_cart
+    self.create_cart if self.cart.nil?
+  end
 
 end
