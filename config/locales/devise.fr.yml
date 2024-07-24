@@ -1,0 +1,73 @@
+fr:
+  devise:
+    confirmations:
+      confirmed: "Votre compte a été confirmé."
+      send_instructions: "Vous recevrez sous peu un email avec les instructions de confirmation de votre compte."
+      send_paranoid_instructions: "Si votre email est valide, vous recevrez sous peu un email avec les instructions de confirmation de votre compte."
+      already_confirmed: "Votre compte est déjà confirmé."
+    failure:
+      already_authenticated: "Vous êtes déjà connecté."
+      unconfirmed: "Vous devez confirmer votre compte avant de continuer."
+      locked: "Votre compte est verrouillé."
+      invalid: "Email ou mot de passe incorrect."
+      not_found_in_database: "Email ou mot de passe incorrect."
+      last_attempt: "Dernière tentative avant le verrouillage de votre compte."
+      timeout: "Votre session a expiré. Veuillez vous reconnecter."
+      inactive: "Votre compte n'est pas activé."
+      unauthenticated: "Vous devez vous connecter ou vous inscrire avant de continuer."
+    passwords:
+      send_instructions: "Vous recevrez sous peu un email avec les instructions pour changer votre mot de passe."
+      send_paranoid_instructions: "Si votre email est valide, vous recevrez sous peu un email avec les instructions pour changer votre mot de passe."
+      updated_not_active: "Votre mot de passe a été changé, mais votre compte n'est pas activé."
+      updated: "Votre mot de passe a été changé."
+      no_token: "Token non valide."
+      token_invalid: "Ce token de changement de mot de passe est invalide."
+      email_invalid: "Cet email est invalide."
+      not_found: "Aucun utilisateur trouvé avec cet email."
+      not_reset: "Impossible de changer le mot de passe."
+      new:
+        forgot_your_password: "Mot de passe oublié?"
+        send_instructions: "Envoyez-moi les instructions de réinitialisation du mot de passe"
+    registrations:
+      signed_up: "Bienvenue! Vous vous êtes inscrit avec succès."
+      signed_up_but_inactive: "Vous vous êtes inscrit avec succès. Cependant, nous devons vérifier votre compte. Veuillez vérifier votre email."
+      signed_up_but_locked: "Vous vous êtes inscrit avec succès. Cependant, votre compte est verrouillé."
+      signed_up_but_unconfirmed: "Vous vous êtes inscrit avec succès. Cependant, nous devons vérifier votre compte. Veuillez vérifier votre email."
+      updated: "Votre compte a été mis à jour avec succès."
+      update_needs_confirmation: "Votre compte a été mis à jour. Nous devons vérifier votre nouveau courriel. Veuillez vérifier votre email."
+      destroyed: "Votre compte a été supprimé avec succès."
+      inactive_signed_up: "Vous vous êtes inscrit avec succès. Cependant, nous devons vérifier votre compte. Veuillez vérifier votre email."
+      new:
+        sign_up: "S'inscrire"
+    sessions:
+      signed_in: "Connecté avec succès."
+      signed_out: "Déconnecté avec succès."
+      invalid: "Email ou mot de passe incorrect."
+    unlocks:
+      send_instructions: "Vous recevrez sous peu un email avec les instructions pour débloquer votre compte."
+      send_paranoid_instructions: "Si votre email est valide, vous recevrez sous peu un email avec les instructions pour débloquer votre compte."
+      unlocked: "Votre compte a été débloqué avec succès."
+    shared:
+      links:
+        log_in: "Se connecter"
+        sign_up: "S'inscrire"
+        forgot_your_password: "Mot de passe oublié?"
+        resend_confirmation: "Vous n'avez pas reçu les instructions de confirmation ?"
+        resend_unlock: "Vous n'avez pas reçu les instructions de déverrouillage ?"
+        sign_in_with: "Se connecter avec %{provider}"
+  simple_form:
+    labels:
+      user:
+        email: "Email"
+        user_name: "Nom d'utilisateur"
+        photo: "Photo"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        level: "Niveau"
+        habit: "Habitude de consommation (de 1 à 10)"
+    options:
+      user:
+        levels:
+          debutant: "Débutant"
+          intermediaire: "Intermédiaire"
+          avance: "Avancé"

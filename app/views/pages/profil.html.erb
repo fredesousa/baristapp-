@@ -11,6 +11,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><strong>Nom :</strong> <%= current_user.user_name %></li>
               <li class="list-group-item"><strong>Email :</strong> <%= current_user.email %></li>
+              <li class="list-group-item"><strong>Niveau :</strong> <%= current_user.level ? current_user.level.humanize : 'Niveau non défini' %></li>
               <!-- Ajoutez d'autres informations personnelles ici -->
             </ul>
           </div>
