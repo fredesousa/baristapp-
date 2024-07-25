@@ -69,7 +69,7 @@
                       <div class="stars">
                         <% (1..5).each do |i| %>
                           <%= radio_button_tag 'review[rating]', i, false, id: "star#{i}", class: 'star-input' %>
-                          <label for="star<%= i %>" class="star">&#9733;</label>
+                          <label for="star<%= i %>"class="star"><i class="fas fa-coffee"></i></label>
                         <% end %>
                       </div>
                     </div>
