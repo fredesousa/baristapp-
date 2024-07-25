@@ -8,6 +8,14 @@
         <% end %>
       </div>
 
+      <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
+        <%= link_to "Nos coups de coeur", coffees_path(sort: 'top_rated'), class: "btn btn-custom w-40 custom-search-btn mt-3" %>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
+        <%= link_to "Voir tous les cafés", coffees_path(sort: 'coffee'), class: "btn btn-custom w-40 custom-search-btn mt-3" %>
+      </div>
+
       <!-- Champ de recherche centré avec icône de favori à gauche et icône de recherche à droite -->
       <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
         <%= link_to profil_path, class: "nav-link position-relative" do %>
@@ -20,7 +28,6 @@
           <% end %>
         <% end %>
       </div>
-
       <!-- Section droite avec les liens de navigation -->
       <div class="d-flex align-items-center">
         <!-- Icone de panier -->
@@ -30,7 +37,7 @@
             <% if current_user&.cart&.cart_items&.count.to_i > 0 %>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
                 <%= current_user.cart.cart_items.count %>
-                <span class="visually-hidden">articles dans le panier</span>
+                <span class="visually-hidden">Votre panier</span>
               </span>
             <% end %>
           <% end %>
