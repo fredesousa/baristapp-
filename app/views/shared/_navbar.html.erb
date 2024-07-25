@@ -20,28 +20,28 @@
       <!-- Section droite avec le coeur, le panier et le menu utilisateur -->
       <div class="d-flex align-items-center">
         <!-- Icône de coeur -->
-        <div class="nav-item mx-2">
-          <%= link_to profil_path, class: "nav-link position-relative" do %>
+        <div class="nav-item mx-2 position-relative">
+          <%= link_to profil_path, class: "nav-link" do %>
             <i class="fas fa-heart fa-lg"></i>
-            <% if current_user&.favorites&.count.to_i > 0 %>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorite-badge">
-                <%= current_user.favorites.count %>
-                <span class="visually-hidden">unread messages</span>
-              </span>
-            <% end %>
+          <% end %>
+          <% if current_user&.favorites&.count.to_i > 0 %>
+            <span class="badge rounded-pill favorite-badge position-absolute start-0">
+              <%= current_user.favorites.count %>
+              <span class="visually-hidden">unread messages</span>
+            </span>
           <% end %>
         </div>
 
         <!-- Icône de panier -->
-        <div class="nav-item mx-2">
-          <%= link_to cart_path, class: "nav-link position-relative" do %>
+        <div class="nav-item mx-2 position-relative">
+          <%= link_to cart_path, class: "nav-link" do %>
             <i class="fa fa-shopping-cart fa-lg"></i>
-            <% if current_user&.cart&.cart_items&.count.to_i > 0 %>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
-                <%= current_user.cart.cart_items.count %>
-                <span class="visually-hidden">Votre panier</span>
-              </span>
-            <% end %>
+          <% end %>
+          <% if current_user&.cart&.cart_items&.count.to_i > 0 %>
+            <span class="badge rounded-pill cart-badge position-absolute start-0">
+              <%= current_user.cart.cart_items.count %>
+              <span class="visually-hidden">Votre panier</span>
+            </span>
           <% end %>
         </div>
 
