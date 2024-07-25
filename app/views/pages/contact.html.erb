@@ -1,0 +1,41 @@
+<!-- app/views/pages/contact.html.erb -->
+<div class="container my-5">
+  <h1 class="text-center mb-4">Contactez-nous</h1>
+  <p class="text-center mb-5">Nous serions ravis de répondre à vos questions. Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+  
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card p-4">
+        <%= form_with url: contact_path, method: :post, local: true do |f| %>
+          <div class="form-group mb-3">
+            <%= f.label :name, "Nom", class: "form-label" %>
+            <%= f.text_field :name, class: "form-control", placeholder: "Votre nom" %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= f.label :email, "Email", class: "form-label" %>
+            <%= f.email_field :email, class: "form-control", placeholder: "Votre email" %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= f.label :message, "Message", class: "form-label" %>
+            <%= f.text_area :message, class: "form-control", placeholder: "Votre message", rows: 5 %>
+          </div>
+
+          <div class="text-center">
+            <%= f.submit "Envoyer", class: "btn btn-custom btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <h2>Informations de contact</h2>
+      <p><strong>Email:</strong> support@votresite.com</p>
+      <p><strong>Téléphone:</strong> +123 456 7890</p>
+      <p><strong>Adresse:</strong> 123 Rue de la Paix, 75000 Paris, France</p>
+    </div>
+  </div>
+</div>

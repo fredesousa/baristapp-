@@ -2,36 +2,38 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-cafe sticky-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
       <!-- Section gauche avec le logo -->
-      <div class="d-flex align-items-center">
-        <%= link_to coffees_path, class: "navbar-brand" do %>
+      <div class="navbar-brand">
+        <%= link_to root_path do %>
           <%= image_tag("logo.png", alt: "Logo", class: "navbar-logo") %>
         <% end %>
       </div>
 
-      <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
-        <%= link_to "Nos coups de coeur", coffees_path(sort: 'top_rated'), class: "btn btn-custom w-40 custom-search-btn mt-3" %>
+      <!-- Liens de navigation principaux au centre -->
+      <div class="d-flex justify-content-center align-items-center flex-grow-1">
+        <%= link_to "Accueil", root_path, class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Nos coups de coeur", coffees_path(sort: 'top_rated'), class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Voir tous les cafés", coffees_path(sort: 'coffee'), class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Cafés d'origine", coffees_path(filter: 'origin'), class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Contact", contact_path, class: "nav-link mx-2 custom-nav-link" %>
       </div>
 
-      <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
-        <%= link_to "Voir tous les cafés", coffees_path(sort: 'coffee'), class: "btn btn-custom w-40 custom-search-btn mt-3" %>
-      </div>
-
-      <!-- Champ de recherche centré avec icône de favori à gauche et icône de recherche à droite -->
-      <div class="d-flex justify-content-center align-items-center flex-grow-1 search-bar-container">
-        <%= link_to profil_path, class: "nav-link position-relative" do %>
-          <i class="fas fa-heart"></i>
-          <% if current_user&.favorites&.count.to_i > 0 %>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorite-badge">
-              <%= current_user.favorites.count %>
-              <span class="visually-hidden">unread messages</span>
-            </span>
-          <% end %>
-        <% end %>
-      </div>
-      <!-- Section droite avec les liens de navigation -->
+      <!-- Section droite avec le coeur, le panier et le menu utilisateur -->
       <div class="d-flex align-items-center">
-        <!-- Icone de panier -->
-        <div class="nav-item">
+        <!-- Icône de coeur -->
+        <div class="nav-item mx-2">
+          <%= link_to profil_path, class: "nav-link position-relative" do %>
+            <i class="fas fa-heart"></i>
+            <% if current_user&.favorites&.count.to_i > 0 %>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorite-badge">
+                <%= current_user.favorites.count %>
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+
+        <!-- Icône de panier -->
+        <div class="nav-item mx-2">
           <%= link_to cart_path, class: "nav-link position-relative" do %>
             <i class="fa fa-shopping-cart"></i>
             <% if current_user&.cart&.cart_items&.count.to_i > 0 %>
@@ -43,14 +45,42 @@
           <% end %>
         </div>
 
+        <!-- Menu utilisateur -->
         <div class="dropdown ms-3">
           <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag(current_user.photo, style: "width: 65px; border-radius: 50%") %>
+            <%= image_tag(current_user.photo, style: "width: 40px; border-radius: 50%") %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Mon profil", profil_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-cafe sticky-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- Section gauche avec le logo -->
+      <div class="navbar-brand">
+        <%= link_to root_path do %>
+          <%= image_tag("logo.png", alt: "Logo", class: "navbar-logo") %>
+        <% end %>
+      </div>
+
+      <!-- Liens de navigation principaux au centre -->
+      <div class="d-flex justify-content-center align-items-center flex-grow-1">
+        <%= link_to "Accueil", root_path, class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Nos coups de coeur", coffees_path(sort: 'top_rated'), class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Voir tous les cafés", coffees_path(sort: 'coffee'), class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Cafés d'origine", coffees_path(filter: 'origin'), class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "Contact", contact_path, class: "nav-link mx-2 custom-nav-link" %>
+      </div>
+
+      <!-- Section droite avec les liens de connexion -->
+      <div class="d-flex align-items-center">
+        <%= link_to "Se connecter", new_user_session_path, class: "nav-link mx-2 custom-nav-link" %>
+        <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link mx-2 custom-nav-link" %>
       </div>
     </div>
   </div>
@@ -58,5 +88,5 @@
 
 <!-- Contenu de la page -->
 <div class="page-content">
-  <!-- Votre contenu de page ici, y compris les boutons "Se connecter" et "S'inscrire" -->
+  <!-- Votre contenu de page ici -->
 </div>

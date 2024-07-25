@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def profil
     @favorites = Favorite.all
   end
+
+  def contact
+    # Logique pour la page de contact, si nécessaire
+  end
 end
