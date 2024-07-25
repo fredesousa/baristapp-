@@ -28,6 +28,10 @@
   text-decoration: underline; /* Ajoute la soulignement au survol */
 }
 
+.footer li {
+  color: #6F4E37; /* Couleur des liens */
+}
+
 @media (max-width: 768px) {
   .footer .row {
     flex-direction: row; /* Assurez-vous que les éléments restent en ligne sur les petits écrans */
