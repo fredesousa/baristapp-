@@ -5,7 +5,7 @@
   width: 100%;
   padding: 0 20px;
   margin: 0;
- 
+
 }
 
 /* Branding */
@@ -47,16 +47,16 @@
     padding: 0 20px;
     margin: 0;
   }
-  
+
   .navbar-collapse {
     display: flex !important;
   }
-  
+
   .navbar-nav {
     flex-direction: row;
     align-items: center;
   }
-  
+
   .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -160,6 +160,7 @@
 .navbar .fa-shopping-cart {
   font-size: 1.5rem;
   margin-right: 15px;
+  color: #6F4E37;
 }
 
 .navbar .cart-badge {
