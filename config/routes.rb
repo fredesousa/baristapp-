@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
   get 'marketplace/:id', to: 'marketplace#show', as: 'marketplace'
-
+  get 'contact', to: 'pages#contact', as: 'contact'
+  
   root to: 'pages#home'
 
   resources :coffees, only: [:index, :show, :new, :create, :edit, :update] do
