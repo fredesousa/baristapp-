@@ -6,15 +6,23 @@
         <div class="card-body">
           <%= link_to "Voir tous les cafés", coffees_path, class: "btn btn-custom w-100 custom-search-btn mb-4" %>
           <!-- Barre de recherche -->
-          <%= form_tag coffees_path, method: :get do %>
-            <%= text_field_tag :query, params[:query], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input" %>
-            <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn" %>
-          <% end %>
-          <!-- filtre des plus populaires -->
-            <%= link_to "Trier par les mieux notés", coffees_path(sort: 'top_rated'), class: "btn btn-custom w-100 custom-search-btn mt-3" %>
+          <div class="filter-group">
+            <h5 class="filter-title">Recherche</h5>
+            <%= form_tag coffees_path, method: :get do %>
+              <%= text_field_tag :query, params[:query], placeholder: "Rechercher par nom de café", class: "form-control custom-search-input" %>
+              <%= submit_tag "Rechercher", class: "btn btn-custom w-100 custom-search-btn" %>
+            <% end %>
+          </div>
+
+          <!-- Filtre des plus populaires -->
+          <div class="filter-group mt-4">
+            <h5 class="filter-title">Trier</h5>
+            <%= link_to "Trier par les mieux notés", coffees_path(sort: 'top_rated'), class: "btn btn-custom w-100 custom-search-btn" %>
+          </div>
 
           <!-- Autres filtres -->
-          <div class="mt-3">
+          <div class="filter-group mt-4">
+            <h5 class="filter-title">Filtres supplémentaires</h5>
             <%= form_tag coffees_path, method: :get do %>
               <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control custom-search-input" %>
               <%= submit_tag "Filtrer par origine", class: "btn btn-custom w-100 custom-search-btn mb-4" %>
@@ -54,18 +62,18 @@
                         <%= link_to coffee_path(coffee) do %>
                           <%= cl_image_tag coffee.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
                         <% end %>
-                          <div>
-                            <% if coffee.favorites.present? %>
-                            <!-- Icône de cœur plein pour les cafés favoris -->
-                            <%= button_to favorite_path(coffee.favorites.ids), method: :delete, class:"btn-favorite"  do %>
-                              <i class="fa-solid fa-heart position-in-card"></i>
-                            <% end %>
-                            <% else %>
-                            <!-- Icône de cœur vide pour les cafés non favoris -->
-                            <%= button_to coffee_favorites_path(coffee), method: :post, class:"btn-favorite"  do %>
-                              <i class="fa-regular fa-heart position-in-card"></i>
-                            <% end %>
-                            <% end %>
+                        <div>
+                          <% if coffee.favorites.present? %>
+                          <!-- Icône de cœur plein pour les cafés favoris -->
+                          <%= button_to favorite_path(coffee.favorites.ids), method: :delete, class:"btn-favorite"  do %>
+                            <i class="fa-solid fa-heart position-in-card"></i>
+                          <% end %>
+                          <% else %>
+                          <!-- Icône de cœur vide pour les cafés non favoris -->
+                          <%= button_to coffee_favorites_path(coffee), method: :post, class:"btn-favorite"  do %>
+                            <i class="fa-regular fa-heart position-in-card"></i>
+                          <% end %>
+                          <% end %>
                         </div>
                       </div>
                     <% end %>
