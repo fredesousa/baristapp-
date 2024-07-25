@@ -101,3 +101,10 @@
 .icon-margin-right {
   margin-right: 8px; /* Vous pouvez ajuster cette valeur pour obtenir l'espacement souhaité */
 }
+
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond blanche avec une opacité de 50% */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Bordure légère pour délimiter l'élément */
+  padding: 10px 10px; /* Ajuste le padding si nécessaire */
+}
+
