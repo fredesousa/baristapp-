@@ -19,7 +19,7 @@
     transition: color 0.3s, background-color 0.3s;
 
     &:hover {
-      color:#d3b092;
+      color: #d3b092;
       border-radius: 5px;
     }
   }
@@ -81,27 +81,8 @@
     outline: none;
   }
 
-  .icon-40 {
-    color: #000000;
-  }
-
-  .position-relative {
-    position: relative;
-  }
-
-  .position-absolute {
-    position: absolute;
-  }
-
-  .icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-  }
-
-  .fa-heart {
+  .fa-heart,
+  .fa-shopping-cart {
     font-size: 1.5rem;
     color: #6F4E37;
     transition: transform 0.2s;
@@ -111,12 +92,22 @@
     }
   }
 
-  .favorite-badge {
+  .badge {
     font-size: 0.75rem;
     padding: 0.5em 0.6em;
     border-radius: 50%;
     animation: pulse 1.5s infinite;
-    margin-left: 15px;
+    margin-left: -10px; /* Adjust to position to the left of the icons */
+    top: -10px;
+    background-color: #d3b092; /* Change the background color */
+
+    &.favorite-badge {
+      color: #fff; /* Text color */
+    }
+
+    &.cart-badge {
+      color: #fff; /* Text color */
+    }
 
     @keyframes pulse {
       0% {
@@ -129,31 +120,6 @@
         transform: scale(1);
       }
     }
-  }
-
-  .fa-beat {
-    animation: beat 0.5s infinite;
-
-    @keyframes beat {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.2);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-  }
-
-  .fa-shopping-cart {
-    font-size: 1.5rem;
-    color: #6F4E37;
-  }
-
-  .cart-badge {
-    background-color: #dc3545;
   }
 
   .mx-2 {
