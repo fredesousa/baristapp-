@@ -54,6 +54,8 @@ gem "cloudinary"
 gem 'faker'
 gem 'pg_search'
 gem 'rails-i18n'
+gem 'open-uri'
+gem 'net-http'
 
 group :development, :test do
   gem "dotenv-rails"

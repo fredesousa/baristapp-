@@ -12,23 +12,30 @@
                 <th>Quantité</th>
                 <th>Prix</th>
                 <th>Total</th>
-                <th>Actions</th> <!-- Nouvelle colonne pour les actions -->
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <% @cart.cart_items.each do |item| %>
                 <tr>
                   <td><%= item.coffee.name %></td>
-                  <td><%= item.quantity %></td>
+                  <td>
+                    <%= form_with url: cart_update_cart_path(cart_id: @cart.id, id: item.id), method: :patch, local: true do |form| %>
+                      <%= form.number_field :quantity, value: item.quantity, min: 1, class: "form-control" %>
+                      <%= form.submit "Modifier", class: "btn btn-link p-0 ml-2 text-decoration-none" %>
+                    <% end %>
+                  </td>
                   <td><%= number_to_currency(item.coffee.price) %></td>
                   <td><%= number_to_currency(item.quantity * item.coffee.price) %></td>
                   <td>
-                    <button class="btn btn-link p-0 ml-2 text-decoration-none">
-                      <i class="fa fa-pencil-alt" style="color: #6F4E37;"></i>
-                    </button>
-                    <button class="btn btn-link p-0 ml-2 text-decoration-none">
-                      <i class="fa fa-trash" style="color: #6F4E37;"></i>
-                    </button>
+                    <%= form_with url: cart_update_cart_path(cart_id: @cart.id, id: item.id), method: :patch, local: true, html: { class: 'd-inline' } do |form| %>
+                      <%= form.submit "", class: "btn btn-link p-0 ml-2 text-decoration-none", style: "color: #6F4E37;", data: { toggle: "tooltip", placement: "top", title: "Modifier" } do %>
+                        <i class="fa fa-pencil-alt"></i>
+                      <% end %>
+                    <% end %>
+                    <%= button_to cart_remove_cart_path(cart_id: @cart.id, id: item.id), method: :delete, class: "btn btn-link p-0 ml-2 text-decoration-none", style: "color: #6F4E37;", data: { toggle: "tooltip", placement: "top", title: "Supprimer" } do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>
@@ -38,7 +45,9 @@
           <h3 class="text-center my-4">Total: <%= number_to_currency(@cart.total_price) %></h3>
 
           <div class="text-center">
-            <%= button_to "Valider le panier", checkout_cart_path, method: :post, class: "btn-custom btn-lg mb-4" %>
+            <%= button_to cart_checkout_cart_path(cart_id: @cart.id), method: :post, class: "btn-custom btn-lg mb-4" do %>
+              Valider le panier
+            <% end %>
           </div>
         </div>
       </div>

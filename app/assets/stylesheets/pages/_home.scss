@@ -1,4 +1,4 @@
-/* Background settings for authenticated and unauthenticated pages */
+/* --- Paramètres généraux pour les pages authentifiées et non authentifiées --- */
 .authenticated-background, .home-page-unauthenticated {
   position: relative;
   min-height: 100vh;
@@ -22,11 +22,11 @@
 }
 
 .authenticated-background::before {
-  background-image: url('form.jpg'); /* Path to your background image for authenticated users */
+  background-image: url('form.jpg'); /* Image de fond pour les utilisateurs authentifiés */
 }
 
 .home-page-unauthenticated::before {
-  background-image: url('home.jpg'); /* Path to your background image for unauthenticated users */
+  background-image: url('home.jpg'); /* Image de fond pour les utilisateurs non authentifiés */
 }
 
 .authenticated-background::after, .home-page-unauthenticated::after {
@@ -36,13 +36,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Light black filter */
+  background: rgba(0, 0, 0, 0.3); /* Filtre noir léger */
   z-index: -1;
 }
 
-/* Custom background for the form */
+/* --- Fond personnalisé pour le formulaire --- */
 .custom-background {
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
   padding: 20px;
   color: #a5836ac9;
   font-weight: bold;
@@ -50,7 +50,7 @@
   z-index: 1;
 }
 
-/* Additional styles */
+/* --- Styles du texte dans les sections non connectées --- */
 .unconnect p {
   font-size: 20px;
   background: linear-gradient(to bottom, #FFFFF0, #d2b48c);
@@ -60,73 +60,6 @@
   font-weight: bold;
   margin-bottom: 3rem;
   font-family: 'Roboto', sans-serif;
-}
-
-.btn-custom {
-  background-color: #ffffff;
-  color: #6F4E37;
-  border: 1px solid #d2b48c;
-  border-radius: 5px;
-  padding: 8px 15px;
-  transition: background-color 0.3s ease;
-  margin: 10px;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-}
-
-.btn-custom:hover {
-  background-color: #d2b48c;
-  color: #ffffff;
-  border-color: #d2b48c;
-}
-
-.btn-custom-cancel {
-  background-color: #ffffff;
-  color: #6F4E37;
-  border: 1px solid #ff1a1a;
-  border-radius: 5px;
-  padding: 8px 15px;
-  transition: background-color 0.3s ease;
-  margin: 10px;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-.btn-custom-cancel:hover {
-  background-color: #e60000;
-  border-color: #b30000;
-}
-
-.btn-custom-back {
-  border: 1px solid #5a6268;
-  background-color: #ffffff;
-  color: #6F4E37;
-  border-radius: 5px;
-  padding: 8px 15px;
-  transition: background-color 0.3s ease;
-  margin: 10px;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-.btn-custom-back:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
-}
-
-.full-height {
-  height: 100vh;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  border-radius: 10px;
 }
 
 .unconnect h1 {
@@ -140,13 +73,63 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.button-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 400px;
+/* --- Styles pour les boutons personnalisés --- */
+.btn-custom, .btn-custom-cancel, .btn-custom-back {
+  background-color: #ffffff;
+  color: #6F4E37;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
+.btn-custom {
+  border: 1px solid #d2b48c;
+}
+
+.btn-custom:hover {
+  background-color: #d2b48c;
+  color: #ffffff;
+  border-color: #d2b48c;
+}
+
+.btn-custom-cancel {
+  border: 1px solid #ff1a1a;
+}
+
+.btn-custom-cancel:hover {
+  background-color: #e60000;
+  border-color: #b30000;
+}
+
+.btn-custom-back {
+  border: 1px solid #5a6268;
+}
+
+.btn-custom-back:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* --- Paramètres de hauteur pour l'écran complet --- */
+.full-height {
+  height: 100vh;
+}
+
+/* --- Wrapper pour le contenu --- */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* --- Styles pour la section de bienvenue --- */
 .welcome {
   text-align: center;
   color: #f3eae3;
@@ -154,26 +137,28 @@
   font-weight: bold;
 }
 
+/* --- Modifications pour les boutons radio et labels --- */
 .tag-item {
   display: inline-block;
-  margin: 10px;
+  margin: 5px; /* Réduction de la marge pour un look compact */
+  position: relative; /* Permet de positionner le style personnalisé */
 }
 
 .tag-item input[type="radio"] {
-  display: none;
+  display: none; /* Cache le bouton radio par défaut */
 }
 
 .tag-item label {
   cursor: pointer;
   display: inline-block;
-  font-size: 1rem;
-  border-radius: 10px;
-  padding: 10px 15px;
+  font-size: 1rem; /* Taille du texte légèrement plus grande pour lisibilité */
+  border-radius: 20px; /* Coins arrondis pour un look moderne */
+  padding: 10px 20px; /* Espacement interne pour confort de clic */
   background-color: #ffffff;
   color: #6F4E37;
-  border: 1px solid #d2b48c;
+  border: 2px solid #d2b48c;
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère pour effet de profondeur */
 }
 
 .tag-item label:hover {
@@ -183,17 +168,60 @@
 }
 
 .tag-item input[type="radio"]:checked + label {
-  background-color: #d2b48c;
-  color: #ffffff;
-  border-color: #d2b48c;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #6F4E37; /* Couleur de fond marron lorsque sélectionné */
+  color: #ffffff; /* Texte blanc pour contraste */
+  border-color: #6F4E37; /* Bordure marron assortie */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Effet d'ombre plus prononcé */
+  transform: translateY(-2px); /* Légère élévation pour effet d'interaction */
 }
 
+/* --- Lien personnalisé avec icône --- */
 .custom-icon-link {
   color: #6F4E37;
   text-decoration: none;
 }
 
 .custom-icon-link:hover {
-  color: #5a3e2d; /* Slightly darker shade for hover effect */
+  color: #5a3e2d; /* Légère nuance plus foncée pour l'effet hover */
+}
+
+/* --- Boutons personnalisés : Enregistrer et Remettre à plus tard --- */
+.btn-save {
+  background-color: #6F4E37; /* Couleur de fond marron */
+  color: #ffffff; /* Texte blanc */
+  border: 2px solid #a5836a; /* Bordure légèrement plus fine */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  padding: 8px 18px; /* Réduction de l'espacement pour un look plus compact */
+  font-family: 'Roboto', sans-serif; /* Police cohérente avec le reste du site */
+  font-weight: bold;
+  font-size: 0.9rem; /* Taille de texte légèrement réduite pour un look plus moderne */
+  text-transform: uppercase; /* Texte en majuscules pour renforcer l'appel à l'action */
+  margin-top: 20px; /* Espacement supérieur pour éloigner du dernier texte */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-save:hover {
+  background-color: #a5836a; /* Couleur légèrement plus claire au survol */
+  transform: translateY(-2px); /* Légère élévation pour effet d'interaction */
+  color: #ffffff;
+}
+
+.btn-later {
+  background-color: #ffffff; /* Fond blanc */
+  color: #6F4E37; /* Texte marron */
+  border: 2px solid #6F4E37; /* Bordure marron */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  padding: 8px 18px; /* Réduction de l'espacement pour cohérence */
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem; /* Taille réduite pour uniformité */
+  text-transform: uppercase;
+  margin-left: 10px; /* Espacement entre les boutons */
+  margin-top: 20px; /* Espacement supérieur pour éloigner du dernier texte */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-later:hover {
+  background-color: #d2b48c; /* Fond beige clair au survol */
+  color: #ffffff; /* Texte blanc au survol */
 }
