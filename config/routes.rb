@@ -20,9 +20,13 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
   resources :favorites, only: [:destroy]
-  resource :cart, only: [:show] do
-    post 'checkout', on: :collection
+  resources :carts, only: [:show] do
+    patch 'update/:id', to: 'carts#update', as: 'update_cart'
+    delete 'remove/:id', to: 'carts#remove', as: 'remove_cart'
+    post 'checkout', to: 'carts#checkout', as: 'checkout_cart'
   end
+  
+
 
   get 'profil', to: 'pages#profil', as: 'profil'
   get 'about', to: 'pages#about', as: 'about'

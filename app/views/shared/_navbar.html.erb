@@ -19,7 +19,7 @@
 
       <!-- Section droite avec le coeur, le panier et le menu utilisateur -->
       <div class="d-flex align-items-center">
-        <!-- Icône de coeur -->
+        <!-- Icône de coeur (favoris) -->
         <div class="nav-item mx-2 position-relative">
           <%= link_to profil_path, class: "nav-link" do %>
             <i class="fas fa-heart fa-lg"></i>
@@ -27,16 +27,24 @@
           <% if current_user&.favorites&.count.to_i > 0 %>
             <span class="badge rounded-pill favorite-badge position-absolute start-0">
               <%= current_user.favorites.count %>
-              <span class="visually-hidden">unread messages</span>
+              <span class="visually-hidden">Nombre de favoris</span>
             </span>
           <% end %>
         </div>
 
         <!-- Icône de panier -->
         <div class="nav-item mx-2 position-relative">
-          <%= link_to cart_path, class: "nav-link" do %>
-            <i class="fa fa-shopping-cart fa-lg"></i>
+          <% if current_user&.cart.present? %>
+            <%= link_to cart_path(current_user.cart), class: "nav-link" do %>
+              <i class="fa fa-shopping-cart fa-lg"></i>
+            <% end %>
+          <% else %>
+            <%= link_to "#", class: "nav-link", disabled: true do %>
+              <i class="fa fa-shopping-cart fa-lg"></i>
+            <% end %>
           <% end %>
+          
+          <!-- Affichage du badge avec le nombre d'articles dans le panier -->
           <% if current_user&.cart&.cart_items&.count.to_i > 0 %>
             <span class="badge rounded-pill cart-badge position-absolute start-0">
               <%= current_user.cart.cart_items.count %>
@@ -46,9 +54,9 @@
         </div>
 
         <!-- Menu utilisateur -->
-        <div class="dropdown ms-3 me-4"> <!-- Ajoutez ici me-4 pour la marge -->
+        <div class="dropdown ms-3 me-4"> <!-- Ajout de me-4 pour la marge -->
           <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag(current_user.photo, style: "width: 40px; border-radius: 50%") %>
+            <%= image_tag(current_user.photo || 'default_avatar.png', style: "width: 40px; border-radius: 50%") %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Mon profil", profil_path, class: "dropdown-item" %>
