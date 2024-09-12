@@ -52,12 +52,12 @@ data = JSON.parse(response)
   coffee = Coffee.create!(
     name: Faker::Coffee.blend_name,
     description: Faker::Coffee.notes,
-    origin: Coffee::ORIGINS.sample,
-    brewing_method: Coffee::BREWING_METHODS.sample,
+    origin: Coffee::ORIGINS.sample,            # Using the updated ORIGINS constant
+    brewing_method: Coffee::BREWING_METHODS.sample,  # Using the updated BREWING_METHODS constant
     strength: rand(1..10),
-    coffee_type: Coffee::COFFEES_TYPE.sample,
-    machin_type: Coffee::MACHINS_TYPE.sample,
-    price: rand(5.0..30.0).round(2) # Random price between 5.0 and 30.0
+    coffee_type: Coffee::COFFEES_TYPE.sample,  # Using the updated COFFEES_TYPE constant
+    machin_type: Coffee::MACHINS_TYPE.sample,  # Using the updated MACHINS_TYPE constant
+    price: rand(5.0..30.0).round(2)            # Random price between 5.0 and 30.0
   )
 
   # Attach image from the API
