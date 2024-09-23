@@ -8,10 +8,12 @@ class PagesController < ApplicationController
   end
 
   def profil
-    @favorites = Favorite.all
+    @favorites = current_user.favorites.includes(:coffee)
   end
 
   def contact
     # Logique pour la page de contact, si nécessaire
   end
+
+  
 end
