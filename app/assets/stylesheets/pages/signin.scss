@@ -6,7 +6,7 @@
   background-image: url('signin.jpg'); /* Chemin vers votre image de fond */
   background-size: cover;
   background-position: center;
-  width: 100%; /* Pour s'assurer que le conteneur prend toute la largeur */
+  width: 100%; /* Assurer que le conteneur prend toute la largeur */
   position: relative; /* Positionnement relatif pour contenir les éléments positionnés absolument */
 }
 
@@ -17,13 +17,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(243, 234, 227, 0.4); /* Couleur de fond avec opacité de 40% */
+  background-color: rgba(243, 234, 227, 0.2); /* Réduire l'opacité à 20% pour rendre l'image plus visible */
   z-index: 1; /* Assure que le pseudo-élément est en dessous du contenu */
 }
 
 .signin .col-md-6 {
   position: relative; /* Positionnement relatif pour contenir les éléments positionnés absolument */
-  background-color: rgba(243, 234, 227, 0.8); /* Couleur de fond légèrement plus foncée du formulaire avec opacité de 80% */
+  background-color: rgba(243, 234, 227, 0.6); /* Réduire l'opacité du fond pour plus de transparence */
   padding: 20px;
   color: #a5836a; /* Couleur du texte */
   font-weight: bold;
@@ -48,6 +48,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
+  background-color: rgba(255, 255, 255, 0.85); /* Légère transparence sur les champs pour voir l'image en dessous */
 }
 
 .signin .form-check-label {
@@ -55,7 +56,7 @@
 }
 
 .signin .btn-primary {
-  background-color: #ffffff; /* Couleur de fond */
+  background-color: rgba(255, 255, 255, 0.85); /* Couleur de fond avec un peu de transparence */
   color: #6F4E37; /* Couleur du texte */
   border: 1px solid #d2b48c; /* Bordure */
   border-radius: 5px; /* Arrondi des coins */
@@ -92,4 +93,3 @@
   text-decoration: underline; /* Souligner les liens au survol */
   color: #a5836a; /* Changement de couleur au survol */
 }
-

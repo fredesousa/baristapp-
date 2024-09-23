@@ -25,25 +25,39 @@
   <% end %>
 </div>
 <!-- Barre de filtres horizontale -->
-<div class="filter-bar-container">
-  <div class="filter-bar">
-    <%= form_tag coffees_path, method: :get, class: "filter-form" do %>
-      <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control custom-select", onchange: "this.form.submit()" %>
+<div class="filter-bar-container p-3 bg-light shadow-sm rounded" style="border-radius: 15px;">
+  <div class="filter-bar d-flex justify-content-around align-items-center">
+    <%= form_tag coffees_path, method: :get, class: "filter-form d-inline-block me-3" do %>
+      <div class="input-group">
+        <label class="input-group-text bg-transparent border-0" style="font-size: 1.1rem;"><i class="fas fa-globe"></i></label>
+        <%= select_tag :origin, options_for_select(Coffee::ORIGINS), include_blank: "Origine", class: "form-control custom-select shadow-sm modern-select", onchange: "this.form.submit()" %>
+      </div>
     <% end %>
 
-    <%= form_tag coffees_path, method: :get, class: "filter-form" do %>
-      <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control custom-select", onchange: "this.form.submit()" %>
+    <%= form_tag coffees_path, method: :get, class: "filter-form d-inline-block me-3" do %>
+      <div class="input-group">
+        <label class="input-group-text bg-transparent border-0" style="font-size: 1.1rem;"><i class="fas fa-coffee"></i></label>
+        <%= select_tag :search_strength, options_for_select((1..6).map { |n| ["Force #{n}", n] }, params[:search_strength]), include_blank: "Force du café", class: "form-control custom-select shadow-sm modern-select", onchange: "this.form.submit()" %>
+      </div>
     <% end %>
 
-    <%= form_tag coffees_path, method: :get, class: "filter-form" do %>
-      <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control custom-select", onchange: "this.form.submit()" %>
+    <%= form_tag coffees_path, method: :get, class: "filter-form d-inline-block me-3" do %>
+      <div class="input-group">
+        <label class="input-group-text bg-transparent border-0" style="font-size: 1.1rem;"><i class="fas fa-mug-hot"></i></label>
+        <%= select_tag :coffee_type, options_for_select(Coffee::COFFEES_TYPE), include_blank: "Type de café", class: "form-control custom-select shadow-sm modern-select", onchange: "this.form.submit()" %>
+      </div>
     <% end %>
 
-    <%= form_tag coffees_path, method: :get, class: "filter-form" do %>
-      <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control custom-select", onchange: "this.form.submit()" %>
+    <%= form_tag coffees_path, method: :get, class: "filter-form d-inline-block" do %>
+      <div class="input-group">
+        <label class="input-group-text bg-transparent border-0" style="font-size: 1.1rem;"><i class="fas fa-blender"></i></label>
+        <%= select_tag :machin_type, options_for_select(Coffee::MACHINS_TYPE), include_blank: "Type de machine", class: "form-control custom-select shadow-sm modern-select", onchange: "this.form.submit()" %>
+      </div>
     <% end %>
   </div>
 </div>
+
+
 
   <!-- Contenu principal -->
   <div class="container-fluid mt-4">
